@@ -8,141 +8,159 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#f8f8f6;--surface:#fff;--surface2:#f2f1ee;--border:#e2e1dc;
-  --text:#1a1a18;--muted:#6b6b67;--accent:#534AB7;--accent2:#1D9E75;
-  --danger:#A32D2D;--warn:#854F0B;--code-bg:#f0efe9;
-  --radius:10px;--sidebar:220px;
+  --bg:#0f1117;
+  --surface:#181c27;
+  --surface2:#1e2235;
+  --surface3:#252a3a;
+  --border:#2a3050;
+  --border2:#333d5c;
+  --text:#d4d8e8;
+  --text-strong:#eaecf5;
+  --muted:#7a839e;
+  --accent:#8b7fe8;
+  --accent-dim:#534AB7;
+  --accent2:#3ec99a;
+  --accent2-dim:#1D9E75;
+  --amber:#e0a84a;
+  --blue:#5ba8f5;
+  --red:#e06b6b;
+  --code-bg:#151821;
+  --code-border:#252d44;
+  --radius:10px;
+  --sidebar:228px;
 }
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;display:flex;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.65;display:flex;min-height:100vh}
 
-/* LOGIN */
-#login-overlay{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999;flex-direction:column;gap:8px}
-.login-card{background:var(--surface);border:0.5px solid var(--border);border-radius:16px;padding:2.5rem 2rem;width:340px}
-.login-logo{font-size:20px;font-weight:500;color:var(--accent);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+/* ── LOGIN ── */
+#login-overlay{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999;flex-direction:column}
+.login-card{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:2.5rem 2rem;width:340px}
+.login-logo{font-size:19px;font-weight:500;color:var(--accent);margin-bottom:5px;display:flex;align-items:center;gap:8px}
 .login-sub{font-size:13px;color:var(--muted);margin-bottom:2rem}
 .form-group{margin-bottom:1rem}
-.form-group label{display:block;font-size:12px;color:var(--muted);margin-bottom:5px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
-.form-group input{width:100%;padding:9px 12px;border:0.5px solid var(--border);border-radius:8px;background:var(--surface2);font-size:14px;color:var(--text);outline:none;transition:border .15s}
+.form-group label{display:block;font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+.form-group input{width:100%;padding:9px 12px;border:1px solid var(--border2);border-radius:8px;background:var(--surface2);font-size:14px;color:var(--text-strong);outline:none;transition:border .15s}
 .form-group input:focus{border-color:var(--accent)}
-.btn-login{width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;margin-top:.5rem;transition:opacity .15s}
-.btn-login:hover{opacity:.9}
-.login-err{font-size:12px;color:var(--danger);margin-top:8px;display:none;text-align:center}
+.btn-login{width:100%;padding:10px;background:var(--accent-dim);color:#d8d4ff;border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;margin-top:.5rem;transition:background .15s}
+.btn-login:hover{background:var(--accent)}
+.login-err{font-size:12px;color:var(--red);margin-top:8px;display:none;text-align:center}
 .login-hint{font-size:11px;color:var(--muted);text-align:center;margin-top:1rem}
 
-/* SIDEBAR */
-#sidebar{width:var(--sidebar);background:var(--surface);border-right:0.5px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;bottom:0;left:0;overflow-y:auto}
-.sidebar-header{padding:1.25rem 1rem 1rem;border-bottom:0.5px solid var(--border)}
+/* ── SIDEBAR ── */
+#sidebar{width:var(--sidebar);background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;bottom:0;left:0;overflow-y:auto}
+.sidebar-header{padding:1.25rem 1rem 1rem;border-bottom:1px solid var(--border)}
 .sidebar-logo{font-size:15px;font-weight:500;color:var(--accent);display:flex;align-items:center;gap:7px}
 .sidebar-logo i{font-size:18px}
 .sidebar-version{font-size:11px;color:var(--muted);margin-top:3px}
-.nav-section{padding:.75rem 1rem .25rem;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
-.nav-item{display:flex;align-items:center;gap:8px;padding:7px 1rem;cursor:pointer;font-size:13px;color:var(--muted);border-radius:0;transition:background .12s,color .12s;border-left:2px solid transparent}
+.nav-section{padding:.85rem 1rem .3rem;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.nav-item{display:flex;align-items:center;gap:8px;padding:7px 1rem;cursor:pointer;font-size:13px;color:var(--muted);border-left:2px solid transparent;transition:all .12s}
 .nav-item:hover{background:var(--surface2);color:var(--text)}
-.nav-item.active{color:var(--accent);background:#EEEDFE;border-left-color:var(--accent);font-weight:500}
+.nav-item.active{color:#c4beff;background:rgba(139,127,232,.12);border-left-color:var(--accent);font-weight:500}
 .nav-item i{font-size:16px;flex-shrink:0}
-.sidebar-footer{margin-top:auto;padding:1rem;border-top:0.5px solid var(--border)}
-.btn-logout{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);cursor:pointer;padding:6px 8px;border-radius:6px;transition:background .12s}
+.sidebar-footer{margin-top:auto;padding:1rem;border-top:1px solid var(--border)}
+.btn-logout{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--muted);cursor:pointer;padding:6px 8px;border-radius:6px;transition:all .12s}
 .btn-logout:hover{background:var(--surface2);color:var(--text)}
 
-/* MAIN */
-#main{margin-left:var(--sidebar);flex:1;padding:2rem 2.5rem;max-width:calc(100% - var(--sidebar))}
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar);flex:1;padding:2rem 2.5rem;max-width:calc(100% - var(--sidebar));overflow-y:auto}
 .page{display:none}
 .page.active{display:block}
-h1{font-size:22px;font-weight:500;color:var(--text);margin-bottom:.4rem}
-h2{font-size:17px;font-weight:500;color:var(--text);margin:2rem 0 .75rem;padding-bottom:.5rem;border-bottom:0.5px solid var(--border)}
-h3{font-size:14px;font-weight:500;color:var(--text);margin:1.5rem 0 .5rem}
+h1{font-size:21px;font-weight:500;color:var(--text-strong)}
+h2{font-size:16px;font-weight:500;color:var(--text-strong);margin:2rem 0 .75rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+h3{font-size:14px;font-weight:500;color:var(--text-strong);margin:1.5rem 0 .5rem}
 p{color:var(--muted);margin-bottom:.75rem;font-size:13.5px}
-.subtitle{font-size:13px;color:var(--muted);margin-bottom:1.75rem}
+.subtitle{font-size:13px;color:var(--muted);margin-top:4px;margin-bottom:1.75rem}
+
+/* ── BADGES ── */
 .badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px}
-.badge-purple{background:#EEEDFE;color:#3C3489}
-.badge-teal{background:#E1F5EE;color:#085041}
-.badge-amber{background:#FAEEDA;color:#633806}
-.badge-gray{background:#F1EFE8;color:#444441}
-.badge-red{background:#FCEBEB;color:#791F1F}
-.badge-blue{background:#E6F1FB;color:#0C447C}
+.badge-purple{background:rgba(139,127,232,.18);color:#c4beff;border:1px solid rgba(139,127,232,.3)}
+.badge-teal{background:rgba(62,201,154,.15);color:#6de8b8;border:1px solid rgba(62,201,154,.25)}
+.badge-amber{background:rgba(224,168,74,.15);color:#f0c56a;border:1px solid rgba(224,168,74,.25)}
+.badge-gray{background:rgba(122,131,158,.15);color:#a0a9c0;border:1px solid rgba(122,131,158,.2)}
+.badge-red{background:rgba(224,107,107,.15);color:#f09090;border:1px solid rgba(224,107,107,.25)}
+.badge-blue{background:rgba(91,168,245,.15);color:#8ec8ff;border:1px solid rgba(91,168,245,.25)}
 
-/* Cards */
-.card{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1rem}
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:1.5rem}
-.stat-card{background:var(--surface2);border-radius:8px;padding:1rem 1.25rem}
+/* ── CARDS ── */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin-bottom:1rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:1.5rem}
+.stat-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem}
 .stat-label{font-size:11px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
-.stat-val{font-size:20px;font-weight:500;color:var(--text)}
+.stat-val{font-size:18px;font-weight:500;color:var(--text-strong)}
 
-/* Tech stack table */
+/* ── TECH TABLE ── */
 .tech-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1.5rem}
-.tech-table th{text-align:left;padding:8px 12px;background:var(--surface2);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-bottom:0.5px solid var(--border)}
-.tech-table td{padding:9px 12px;border-bottom:0.5px solid var(--border);color:var(--muted)}
+.tech-table th{text-align:left;padding:8px 12px;background:var(--surface2);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-bottom:1px solid var(--border)}
+.tech-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--muted)}
 .tech-table td:first-child{font-weight:500;color:var(--text)}
 .tech-table tr:last-child td{border-bottom:none}
 .tech-table tr:hover td{background:var(--surface2)}
+/* tech links */
+.tech-table a{color:var(--accent);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:3px}
+.tech-table a:hover{color:#c4beff;text-decoration:underline}
+.tech-table a::after{content:"↗";font-size:10px;opacity:.6}
 
-/* Code blocks */
-pre{background:var(--code-bg);border:0.5px solid var(--border);border-radius:8px;padding:1rem 1.25rem;font-family:'SF Mono','Fira Code',monospace;font-size:12px;line-height:1.7;overflow-x:auto;margin:1rem 0;color:var(--text)}
-code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(--code-bg);padding:2px 6px;border-radius:4px;color:var(--accent)}
+/* ── CODE ── */
+pre{background:var(--code-bg);border:1px solid var(--code-border);border-radius:8px;padding:1rem 1.25rem;font-family:'SF Mono','Fira Code','Cascadia Code',monospace;font-size:12px;line-height:1.75;overflow-x:auto;margin:1rem 0;color:#b8c5e0}
+code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(--code-bg);padding:2px 6px;border-radius:4px;color:var(--accent);border:1px solid var(--code-border)}
 
-/* Folder tree */
-.tree{font-family:'SF Mono','Fira Code',monospace;font-size:12px;line-height:1.9;background:var(--code-bg);border:0.5px solid var(--border);border-radius:8px;padding:1rem 1.25rem;color:var(--text);overflow-x:auto;margin:1rem 0}
-.tree .dir{color:var(--accent);font-weight:500}
-.tree .comment{color:var(--muted)}
+/* ── FOLDER TREE ── */
+.tree{font-family:'SF Mono','Fira Code',monospace;font-size:12px;line-height:2;background:var(--code-bg);border:1px solid var(--code-border);border-radius:8px;padding:1rem 1.25rem;color:#b8c5e0;overflow-x:auto;margin:1rem 0}
+.tree .dir{color:#8ec8ff;font-weight:500}
+.tree .comment{color:#4e5a7a}
 
-/* Endpoint list */
-.endpoint-group{margin-bottom:1.5rem}
-.endpoint{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:0.5px solid var(--border);font-size:13px}
+/* ── ENDPOINTS ── */
+.endpoint{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
 .endpoint:last-child{border-bottom:none}
-.method{font-size:10px;font-weight:500;padding:3px 7px;border-radius:4px;min-width:46px;text-align:center;flex-shrink:0;margin-top:1px}
-.get{background:#E1F5EE;color:#085041}
-.post{background:#EEEDFE;color:#3C3489}
-.put{background:#FAEEDA;color:#633806}
-.patch{background:#E6F1FB;color:#0C447C}
-.delete_{background:#FCEBEB;color:#791F1F}
-.ep-path{font-family:'SF Mono','Fira Code',monospace;font-size:12px;color:var(--text);font-weight:500;margin-bottom:2px}
+.method{font-size:10px;font-weight:600;padding:3px 7px;border-radius:4px;min-width:46px;text-align:center;flex-shrink:0;margin-top:1px;letter-spacing:.03em}
+.get   {background:rgba(62,201,154,.15);color:#6de8b8;border:1px solid rgba(62,201,154,.2)}
+.post  {background:rgba(139,127,232,.15);color:#c4beff;border:1px solid rgba(139,127,232,.2)}
+.put   {background:rgba(224,168,74,.15);color:#f0c56a;border:1px solid rgba(224,168,74,.2)}
+.patch {background:rgba(91,168,245,.15);color:#8ec8ff;border:1px solid rgba(91,168,245,.2)}
+.delete_{background:rgba(224,107,107,.15);color:#f09090;border:1px solid rgba(224,107,107,.2)}
+.ep-path{font-family:'SF Mono','Fira Code',monospace;font-size:12px;color:var(--text-strong);font-weight:500;margin-bottom:3px}
 .ep-desc{font-size:12px;color:var(--muted)}
-.ep-roles{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap}
+.ep-roles{display:flex;gap:4px;margin-top:5px;flex-wrap:wrap}
 
-/* Schema */
-.schema-block{background:var(--code-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1rem 0;font-family:'SF Mono','Fira Code',monospace;font-size:12px;line-height:1.8;overflow-x:auto}
-.sk{color:#534AB7}.sv{color:#1D9E75}.sc{color:var(--muted)}.sf{color:var(--text)}
+/* ── ALERTS ── */
+.alert{display:flex;gap:10px;padding:.8rem 1rem;border-radius:8px;font-size:13px;margin:1rem 0;align-items:flex-start;color:var(--text)}
+.alert i{font-size:17px;flex-shrink:0;margin-top:1px}
+.alert-info   {background:rgba(91,168,245,.1);border-left:3px solid var(--blue)}
+.alert-info i  {color:var(--blue)}
+.alert-warn   {background:rgba(224,168,74,.1);border-left:3px solid var(--amber)}
+.alert-warn i  {color:var(--amber)}
+.alert-danger {background:rgba(224,107,107,.1);border-left:3px solid var(--red)}
+.alert-danger i{color:var(--red)}
+.alert-success{background:rgba(62,201,154,.1);border-left:3px solid var(--accent2)}
+.alert-success i{color:var(--accent2)}
 
-/* Alert boxes */
-.alert{display:flex;gap:10px;padding:.75rem 1rem;border-radius:8px;font-size:13px;margin:1rem 0;align-items:flex-start}
-.alert i{font-size:16px;flex-shrink:0;margin-top:1px}
-.alert-info{background:#E6F1FB;color:#0C447C;border-left:3px solid #185FA5}
-.alert-warn{background:#FAEEDA;color:#633806;border-left:3px solid #854F0B}
-.alert-danger{background:#FCEBEB;color:#791F1F;border-left:3px solid #A32D2D}
-.alert-success{background:#E1F5EE;color:#085041;border-left:3px solid #0F6E56}
+/* ── TOPBAR ── */
+.topbar{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
+.tag-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 
-/* Top bar */
-.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1rem;border-bottom:0.5px solid var(--border)}
-.topbar-left h1{margin-bottom:.2rem}
-.tag-row{display:flex;gap:6px;flex-wrap:wrap}
-
-/* Collapsible sections */
-.section-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;padding:4px 0}
-.section-toggle i.toggle-icon{font-size:16px;color:var(--muted);transition:transform .2s}
-.section-toggle.open i.toggle-icon{transform:rotate(180deg)}
-.section-body{overflow:hidden;transition:max-height .25s ease}
-
-/* DB table docs */
-.db-table-card{background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius);margin-bottom:1.25rem;overflow:hidden}
-.db-table-header{display:flex;align-items:center;gap:10px;padding:12px 1.25rem;background:var(--surface2);border-bottom:0.5px solid var(--border);cursor:pointer}
-.db-table-name{font-weight:500;font-size:14px;font-family:'SF Mono','Fira Code',monospace}
-.db-table-desc{font-size:12px;color:var(--muted);margin-left:auto}
-.db-cols{width:100%;border-collapse:collapse;font-size:12.5px}
-.db-cols th{padding:7px 1.25rem;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:500;background:var(--bg);border-bottom:0.5px solid var(--border)}
-.db-cols td{padding:8px 1.25rem;border-bottom:0.5px solid var(--border);color:var(--muted)}
-.db-cols td:first-child{font-family:'SF Mono','Fira Code',monospace;font-size:12px;color:var(--text);font-weight:500}
-.db-cols td:nth-child(2){color:var(--accent);font-family:'SF Mono','Fira Code',monospace;font-size:11px}
-.db-cols tr:last-child td{border-bottom:none}
-.pk-icon{color:#854F0B;font-size:12px;margin-right:4px}
-.fk-icon{color:#534AB7;font-size:12px;margin-right:4px}
-.nn{font-size:10px;background:#FCEBEB;color:#791F1F;padding:1px 5px;border-radius:3px;margin-left:4px}
-.uq{font-size:10px;background:#E6F1FB;color:#0C447C;padding:1px 5px;border-radius:3px;margin-left:4px}
-
-/* Search */
+/* ── SEARCH ── */
 .search-wrap{position:relative;margin-bottom:1.5rem}
 .search-wrap i{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:16px}
-.search-wrap input{width:100%;padding:9px 12px 9px 34px;border:0.5px solid var(--border);border-radius:8px;background:var(--surface);font-size:13px;color:var(--text);outline:none}
+.search-wrap input{width:100%;padding:9px 12px 9px 34px;border:1px solid var(--border2);border-radius:8px;background:var(--surface2);font-size:13px;color:var(--text);outline:none;transition:border .15s}
 .search-wrap input:focus{border-color:var(--accent)}
+
+/* ── DB TABLES ── */
+.db-table-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1.25rem;overflow:hidden}
+.db-table-header{display:flex;align-items:center;gap:10px;padding:11px 1.25rem;background:var(--surface2);border-bottom:1px solid var(--border)}
+.db-table-name{font-weight:500;font-size:13.5px;font-family:'SF Mono','Fira Code',monospace;color:var(--text-strong)}
+.db-table-desc{font-size:12px;color:var(--muted);margin-left:auto}
+.db-cols{width:100%;border-collapse:collapse;font-size:12.5px}
+.db-cols th{padding:7px 1.25rem;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:500;background:rgba(0,0,0,.2);border-bottom:1px solid var(--border)}
+.db-cols td{padding:8px 1.25rem;border-bottom:1px solid var(--border);color:var(--muted)}
+.db-cols td:first-child{font-family:'SF Mono','Fira Code',monospace;font-size:12px;color:#b8c5e0;font-weight:500}
+.db-cols td:nth-child(2){color:var(--accent);font-family:'SF Mono','Fira Code',monospace;font-size:11px}
+.db-cols tr:last-child td{border-bottom:none}
+.db-cols tr:hover td{background:var(--surface2)}
+.pk-icon{color:var(--amber);font-size:12px;margin-right:4px}
+.fk-icon{color:var(--accent);font-size:12px;margin-right:4px}
+.nn{font-size:10px;background:rgba(224,107,107,.15);color:#f09090;padding:1px 5px;border-radius:3px;margin-left:4px;border:1px solid rgba(224,107,107,.2)}
+.uq{font-size:10px;background:rgba(91,168,245,.15);color:#8ec8ff;padding:1px 5px;border-radius:3px;margin-left:4px;border:1px solid rgba(91,168,245,.2)}
+
+/* ── MISC ── */
+.schema-block{background:var(--code-bg);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin:1rem 0;font-family:'SF Mono','Fira Code',monospace;font-size:12px;line-height:1.8;overflow-x:auto;color:#b8c5e0}
 </style>
 </head>
 <body>
@@ -150,16 +168,10 @@ code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(-
 <!-- LOGIN -->
 <div id="login-overlay">
   <div class="login-card">
-    <div class="login-logo"><i class="ti ti-chart-pie-2"></i> GesCartera</div>
+    <div class="login-logo"><i class="ti ti-chart-pie-2"></i>GesCartera</div>
     <div class="login-sub">Portal de documentación técnica</div>
-    <div class="form-group">
-      <label>Usuario</label>
-      <input type="text" id="inp-user" placeholder="usuario" autocomplete="off"/>
-    </div>
-    <div class="form-group">
-      <label>Contraseña</label>
-      <input type="password" id="inp-pass" placeholder="••••••••" autocomplete="off"/>
-    </div>
+    <div class="form-group"><label>Usuario</label><input type="text" id="inp-user" placeholder="usuario" autocomplete="off"/></div>
+    <div class="form-group"><label>Contraseña</label><input type="password" id="inp-pass" placeholder="••••••••" autocomplete="off"/></div>
     <button class="btn-login" onclick="doLogin()">Ingresar</button>
     <div class="login-err" id="login-err">Credenciales incorrectas</div>
     <div class="login-hint">Acceso restringido · Solo personal autorizado</div>
@@ -169,27 +181,27 @@ code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(-
 <!-- SIDEBAR -->
 <nav id="sidebar" style="display:none">
   <div class="sidebar-header">
-    <div class="sidebar-logo"><i class="ti ti-chart-pie-2"></i> GesCartera</div>
+    <div class="sidebar-logo"><i class="ti ti-chart-pie-2"></i>GesCartera</div>
     <div class="sidebar-version">Docs v1.0 · 2025</div>
   </div>
   <div class="nav-section">General</div>
-  <div class="nav-item active" onclick="show('overview')" data-page="overview"><i class="ti ti-home"></i> Inicio</div>
+  <div class="nav-item active" onclick="show('overview')" data-page="overview"><i class="ti ti-home"></i>Inicio</div>
   <div class="nav-section">Frontend</div>
-  <div class="nav-item" onclick="show('fe-stack')" data-page="fe-stack"><i class="ti ti-layers-intersect"></i> Stack & estructura</div>
-  <div class="nav-item" onclick="show('fe-modules')" data-page="fe-modules"><i class="ti ti-layout-2"></i> Módulos y vistas</div>
-  <div class="nav-item" onclick="show('fe-state')" data-page="fe-state"><i class="ti ti-database"></i> Estado & routing</div>
-  <div class="nav-item" onclick="show('fe-security')" data-page="fe-security"><i class="ti ti-shield-lock"></i> Auth & planes</div>
+  <div class="nav-item" onclick="show('fe-stack')" data-page="fe-stack"><i class="ti ti-layers-intersect"></i>Stack & estructura</div>
+  <div class="nav-item" onclick="show('fe-modules')" data-page="fe-modules"><i class="ti ti-layout-2"></i>Módulos y vistas</div>
+  <div class="nav-item" onclick="show('fe-state')" data-page="fe-state"><i class="ti ti-refresh"></i>Estado & routing</div>
+  <div class="nav-item" onclick="show('fe-security')" data-page="fe-security"><i class="ti ti-shield-lock"></i>Auth & planes</div>
   <div class="nav-section">Backend</div>
-  <div class="nav-item" onclick="show('be-stack')" data-page="be-stack"><i class="ti ti-server"></i> Stack & estructura</div>
-  <div class="nav-item" onclick="show('be-api')" data-page="be-api"><i class="ti ti-api"></i> API REST</div>
-  <div class="nav-item" onclick="show('be-security')" data-page="be-security"><i class="ti ti-lock"></i> Seguridad & JWT</div>
-  <div class="nav-item" onclick="show('be-ia')" data-page="be-ia"><i class="ti ti-brain"></i> Módulo IA</div>
+  <div class="nav-item" onclick="show('be-stack')" data-page="be-stack"><i class="ti ti-server"></i>Stack & estructura</div>
+  <div class="nav-item" onclick="show('be-api')" data-page="be-api"><i class="ti ti-api"></i>API REST</div>
+  <div class="nav-item" onclick="show('be-security')" data-page="be-security"><i class="ti ti-lock"></i>Seguridad & JWT</div>
+  <div class="nav-item" onclick="show('be-ia')" data-page="be-ia"><i class="ti ti-brain"></i>Módulo IA</div>
   <div class="nav-section">Base de datos</div>
-  <div class="nav-item" onclick="show('db-model')" data-page="db-model"><i class="ti ti-table"></i> Modelo de datos</div>
-  <div class="nav-item" onclick="show('db-views')" data-page="db-views"><i class="ti ti-eye"></i> Vistas & triggers</div>
-  <div class="nav-item" onclick="show('db-index')" data-page="db-index"><i class="ti ti-bolt"></i> Índices & rendimiento</div>
+  <div class="nav-item" onclick="show('db-model')" data-page="db-model"><i class="ti ti-table"></i>Modelo de datos</div>
+  <div class="nav-item" onclick="show('db-views')" data-page="db-views"><i class="ti ti-eye"></i>Vistas & triggers</div>
+  <div class="nav-item" onclick="show('db-index')" data-page="db-index"><i class="ti ti-bolt"></i>Índices & rendimiento</div>
   <div class="sidebar-footer">
-    <div class="btn-logout" onclick="doLogout()"><i class="ti ti-logout"></i> Cerrar sesión</div>
+    <div class="btn-logout" onclick="doLogout()"><i class="ti ti-logout"></i>Cerrar sesión</div>
   </div>
 </nav>
 
@@ -201,7 +213,7 @@ code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(-
   <div class="topbar">
     <div class="topbar-left">
       <h1>Sistema de gestión de cartera</h1>
-      <div class="tag-row" style="margin-top:8px">
+      <div class="tag-row">
         <span class="badge badge-purple">SaaS multiempresa</span>
         <span class="badge badge-teal">REST API</span>
         <span class="badge badge-amber">IA predictiva</span>
@@ -211,41 +223,40 @@ code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(-
   </div>
   <p>Plataforma web para administración de cuentas por cobrar de múltiples empresas. Gestiona clientes, facturas, pagos, cartera vencida y análisis de riesgo mediante inteligencia artificial.</p>
   <div class="card-grid">
-    <div class="stat-card"><div class="stat-label">Frontend</div><div class="stat-val" style="font-size:15px;color:var(--accent)">Vue.js 3</div></div>
-    <div class="stat-card"><div class="stat-label">Backend</div><div class="stat-val" style="font-size:15px;color:var(--accent2)">Flask · Python</div></div>
-    <div class="stat-card"><div class="stat-label">Base de datos</div><div class="stat-val" style="font-size:15px;color:#854F0B">PostgreSQL 15</div></div>
-    <div class="stat-card"><div class="stat-label">IA</div><div class="stat-val" style="font-size:15px;color:#185FA5">Scikit-Learn</div></div>
+    <div class="stat-card"><div class="stat-label">Frontend</div><div class="stat-val" style="color:var(--accent)">Vue.js 3</div></div>
+    <div class="stat-card"><div class="stat-label">Backend</div><div class="stat-val" style="color:var(--accent2)">Flask · Python</div></div>
+    <div class="stat-card"><div class="stat-label">Base de datos</div><div class="stat-val" style="color:var(--amber)">PostgreSQL 15</div></div>
+    <div class="stat-card"><div class="stat-label">IA / ML</div><div class="stat-val" style="color:var(--blue)">Scikit-Learn</div></div>
   </div>
   <h2>Arquitectura general</h2>
-  <div class="card">
-    <p style="margin:0;font-size:13px">El frontend en <code>Vue.js 3</code> consume una API REST desarrollada en <code>Flask</code>. El backend centraliza toda la lógica de negocio, autenticación, autorización y ejecución de modelos de IA. Todos los datos se almacenan en <code>PostgreSQL</code>. La infraestructura corre sobre <code>Docker</code> con <code>Nginx</code> como reverse proxy y <code>Gunicorn</code> como servidor WSGI.</p>
-  </div>
-  <div class="alert alert-info"><i class="ti ti-info-circle"></i><div>El módulo de inteligencia artificial está disponible únicamente para empresas con <strong>plan Enterprise</strong>. El control se aplica tanto en el backend (decorador <code>@requiere_plan</code>) como en el frontend (composable <code>usePlan()</code>).</div></div>
+  <div class="card"><p style="margin:0;font-size:13.5px;color:var(--text)">El frontend en <code>Vue.js 3</code> consume una API REST desarrollada en <code>Flask</code>. El backend centraliza toda la lógica de negocio, autenticación, autorización y ejecución de modelos de IA. Todos los datos se almacenan en <code>PostgreSQL</code>. La infraestructura corre sobre <code>Docker</code> con <code>Nginx</code> como reverse proxy y <code>Gunicorn</code> como servidor WSGI.</p></div>
+  <div class="alert alert-info"><i class="ti ti-info-circle"></i><div>El módulo de inteligencia artificial está disponible únicamente para empresas con plan <span class="badge badge-teal">Enterprise</span>. El control se aplica en el backend con <code>@requiere_plan</code> y en el frontend con el composable <code>usePlan()</code>.</div></div>
   <h2>Modelo multiempresa</h2>
-  <p>Cada registro del sistema lleva un campo <code>empresa_id</code> que lo aísla completamente. Ninguna empresa puede ver ni modificar datos de otra. El <code>empresa_id</code> se extrae siempre del token JWT, nunca de parámetros del cliente.</p>
+  <p style="color:var(--text)">Cada registro del sistema lleva un campo <code>empresa_id</code> que lo aísla completamente. Ninguna empresa puede ver ni modificar datos de otra. El <code>empresa_id</code> se extrae siempre del token JWT, nunca de parámetros del cliente.</p>
   <h2>Planes comerciales</h2>
   <div class="card-grid">
-    <div class="card" style="margin:0"><div class="badge badge-gray" style="margin-bottom:10px">Básico</div><p style="font-size:12px;margin:0">Clientes · Facturas · Pagos · Reportes básicos</p></div>
-    <div class="card" style="margin:0;border-color:#534AB7"><div class="badge badge-purple" style="margin-bottom:10px">Profesional</div><p style="font-size:12px;margin:0">Dashboard avanzado · Reportes financieros · Exportación · KPIs</p></div>
-    <div class="card" style="margin:0;border-color:#1D9E75"><div class="badge badge-teal" style="margin-bottom:10px">Enterprise IA</div><p style="font-size:12px;margin:0">Predicción mora · Segmentación · Reportes inteligentes · Recomendaciones</p></div>
+    <div class="card" style="margin:0"><div class="badge badge-gray" style="margin-bottom:10px">Básico</div><p style="font-size:12.5px;margin:0;color:var(--text)">Clientes · Facturas · Pagos · Reportes básicos</p></div>
+    <div class="card" style="margin:0;border-color:var(--accent-dim)"><div class="badge badge-purple" style="margin-bottom:10px">Profesional</div><p style="font-size:12.5px;margin:0;color:var(--text)">Dashboard avanzado · Reportes financieros · Exportación · KPIs</p></div>
+    <div class="card" style="margin:0;border-color:var(--accent2-dim)"><div class="badge badge-teal" style="margin-bottom:10px">Enterprise IA</div><p style="font-size:12.5px;margin:0;color:var(--text)">Predicción mora · Segmentación · Reportes inteligentes · Recomendaciones</p></div>
   </div>
 </div>
 
 <!-- FE STACK -->
 <div class="page" id="page-fe-stack">
-  <div class="topbar"><div class="topbar-left"><h1>Frontend — stack y estructura</h1><p class="subtitle" style="margin-top:4px">Vue.js 3 · Composition API</p></div><span class="badge badge-purple">Frontend</span></div>
+  <div class="topbar"><div><h1>Frontend — stack y estructura</h1><p class="subtitle">Vue.js 3 · Composition API</p></div><span class="badge badge-purple">Frontend</span></div>
   <h2>Stack tecnológico</h2>
   <table class="tech-table">
-    <thead><tr><th>Tecnología</th><th>Versión</th><th>Propósito</th></tr></thead>
+    <thead><tr><th>Tecnología</th><th>Versión</th><th>Propósito</th><th>Docs</th></tr></thead>
     <tbody>
-      <tr><td>Vue.js</td><td>3.x</td><td>Framework principal (Composition API)</td></tr>
-      <tr><td>Vue Router</td><td>4.x</td><td>Navegación y rutas protegidas</td></tr>
-      <tr><td>Pinia</td><td>2.x</td><td>Estado global por dominio</td></tr>
-      <tr><td>Axios</td><td>1.x</td><td>Comunicación con la API REST</td></tr>
-      <tr><td>Vuetify / Bootstrap</td><td>3.x</td><td>Componentes UI y estilos</td></tr>
-      <tr><td>Chart.js</td><td>4.x</td><td>Gráficas del dashboard</td></tr>
-      <tr><td>Vite</td><td>5.x</td><td>Bundler y entorno de desarrollo</td></tr>
-      <tr><td>VeeValidate + Yup</td><td>—</td><td>Validación de formularios</td></tr>
+      <tr><td>Vue.js</td><td>3.x</td><td>Framework principal (Composition API)</td><td><a href="https://vuejs.org/guide/introduction" target="_blank">Documentación</a></td></tr>
+      <tr><td>Vue Router</td><td>4.x</td><td>Navegación y rutas protegidas</td><td><a href="https://router.vuejs.org" target="_blank">Documentación</a></td></tr>
+      <tr><td>Pinia</td><td>2.x</td><td>Estado global por dominio</td><td><a href="https://pinia.vuejs.org" target="_blank">Documentación</a></td></tr>
+      <tr><td>Axios</td><td>1.x</td><td>Comunicación con la API REST</td><td><a href="https://axios-http.com/docs/intro" target="_blank">Documentación</a></td></tr>
+      <tr><td>Vuetify</td><td>3.x</td><td>Componentes UI y estilos</td><td><a href="https://vuetifyjs.com/en/getting-started/installation" target="_blank">Documentación</a></td></tr>
+      <tr><td>Chart.js</td><td>4.x</td><td>Gráficas del dashboard</td><td><a href="https://www.chartjs.org/docs/latest" target="_blank">Documentación</a></td></tr>
+      <tr><td>Vite</td><td>5.x</td><td>Bundler y entorno de desarrollo</td><td><a href="https://vitejs.dev/guide" target="_blank">Documentación</a></td></tr>
+      <tr><td>VeeValidate</td><td>4.x</td><td>Validación de formularios</td><td><a href="https://vee-validate.logaretm.com/v4" target="_blank">Documentación</a></td></tr>
+      <tr><td>Yup</td><td>—</td><td>Esquemas de validación para VeeValidate</td><td><a href="https://github.com/jquense/yup" target="_blank">Documentación</a></td></tr>
     </tbody>
   </table>
   <h2>Estructura de carpetas</h2>
@@ -266,15 +277,8 @@ code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(-
 │   │   ├── <span class="dir">cartera/</span>
 │   │   ├── <span class="dir">reportes/</span>
 │   │   └── <span class="dir">configuracion/</span>
-│   ├── <span class="dir">router/</span>
-│   │   └── index.js
+│   ├── <span class="dir">router/</span>         <span class="comment">// index.js — rutas + guards</span>
 │   ├── <span class="dir">stores/</span>         <span class="comment">// Pinia — un store por dominio</span>
-│   │   ├── auth.store.js
-│   │   ├── clientes.store.js
-│   │   ├── facturas.store.js
-│   │   ├── pagos.store.js
-│   │   ├── cartera.store.js
-│   │   └── reportes.store.js
 │   ├── <span class="dir">services/</span>       <span class="comment">// Llamadas Axios por módulo</span>
 │   ├── <span class="dir">utils/</span>          <span class="comment">// Formatters, constantes, composables</span>
 │   ├── <span class="dir">middleware/</span>     <span class="comment">// Guards de navegación</span>
@@ -283,31 +287,28 @@ code{font-family:'SF Mono','Fira Code',monospace;font-size:12px;background:var(-
 ├── .env
 ├── vite.config.js
 └── package.json</div>
-  <div class="alert alert-warn"><i class="ti ti-alert-triangle"></i><div>Todas las vistas deben cargarse con <code>() => import(...)</code> (lazy loading) para optimizar el bundle inicial. Nunca importar vistas estáticamente en el router.</div></div>
+  <div class="alert alert-warn"><i class="ti ti-alert-triangle"></i><div>Todas las vistas deben cargarse con <code>() => import(...)</code> (lazy loading). Nunca importar vistas estáticamente en el router.</div></div>
   <h2>Variables de entorno</h2>
   <pre>VITE_API_URL=https://api.tudominio.com/api/v1
 VITE_APP_NAME=GesCartera</pre>
   <h2>Convenciones</h2>
   <div class="card">
-    <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--muted)">
-      <li><i class="ti ti-check" style="color:var(--accent2);margin-right:6px"></i>Composition API con <code>&lt;script setup&gt;</code> en todos los componentes</li>
-      <li><i class="ti ti-check" style="color:var(--accent2);margin-right:6px"></i>PascalCase para vistas y componentes, camelCase para stores y services</li>
-      <li><i class="ti ti-check" style="color:var(--accent2);margin-right:6px"></i>Todo error de API manejado con <code>try/catch</code> y toast de notificación</li>
-      <li><i class="ti ti-x" style="color:var(--danger);margin-right:6px"></i>No lógica de negocio en el frontend — saldos, estados y clasificaciones los retorna la API</li>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:var(--text)">
+      <li><i class="ti ti-check" style="color:var(--accent2);margin-right:7px"></i>Composition API con <code>&lt;script setup&gt;</code> en todos los componentes</li>
+      <li><i class="ti ti-check" style="color:var(--accent2);margin-right:7px"></i>PascalCase para vistas y componentes · camelCase para stores y services</li>
+      <li><i class="ti ti-check" style="color:var(--accent2);margin-right:7px"></i>Todo error de API manejado con <code>try/catch</code> y toast de notificación</li>
+      <li><i class="ti ti-x" style="color:var(--red);margin-right:7px"></i>No lógica de negocio en el frontend — saldos, estados y clasificaciones los retorna la API</li>
     </ul>
   </div>
 </div>
 
 <!-- FE MODULES -->
 <div class="page" id="page-fe-modules">
-  <div class="topbar"><div class="topbar-left"><h1>Frontend — módulos y vistas</h1><p class="subtitle" style="margin-top:4px">Vistas, formularios y comportamiento de UI</p></div><span class="badge badge-purple">Frontend</span></div>
+  <div class="topbar"><div><h1>Frontend — módulos y vistas</h1><p class="subtitle">Vistas, formularios y comportamiento de UI</p></div><span class="badge badge-purple">Frontend</span></div>
   <h2>Autenticación</h2>
-  <div class="card">
-    <p style="font-size:13px;margin-bottom:8px">Vistas: <code>LoginView</code> · <code>RecuperarPasswordView</code> · <code>ResetPasswordView</code></p>
-    <p style="font-size:13px;margin:0">Al iniciar sesión, almacenar <code>access_token</code> y <code>refresh_token</code> en el store de Pinia. Implementar interceptor de Axios para adjuntar el token y refrescarlo automáticamente ante error 401.</p>
-  </div>
+  <div class="card"><p style="font-size:13.5px;margin-bottom:8px;color:var(--text)">Vistas: <code>LoginView</code> · <code>RecuperarPasswordView</code> · <code>ResetPasswordView</code></p><p style="font-size:13.5px;margin:0;color:var(--text)">Al iniciar sesión, almacenar <code>access_token</code> y <code>refresh_token</code> en el store de Pinia. Implementar interceptor de Axios para adjuntar el token y refrescarlo automáticamente ante error 401.</p></div>
   <h2>Dashboard</h2>
-  <p>Vista única que carga todos los KPIs con una sola llamada a <code>GET /api/v1/dashboard/resumen</code>. Usar skeleton loaders mientras cargan los datos.</p>
+  <p style="color:var(--text)">Vista única que carga todos los KPIs con una sola llamada a <code>GET /api/v1/dashboard/resumen</code>. Usar skeleton loaders mientras cargan los datos.</p>
   <table class="tech-table">
     <thead><tr><th>Gráfica</th><th>Tipo</th><th>Datos</th></tr></thead>
     <tbody>
@@ -318,23 +319,21 @@ VITE_APP_NAME=GesCartera</pre>
       <tr><td>Comparativo mensual</td><td>Grouped bar</td><td>Mes actual vs anterior</td></tr>
     </tbody>
   </table>
-  <h2>Facturas — estados y colores</h2>
-  <div class="card" style="display:flex;gap:10px;flex-wrap:wrap">
+  <h2>Facturas — estados</h2>
+  <div class="card" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
     <span class="badge badge-blue">Pendiente</span>
     <span class="badge badge-teal">Pagada</span>
     <span class="badge badge-red">Vencida</span>
     <span class="badge badge-amber">En cobro</span>
     <span class="badge badge-gray">Castigada</span>
   </div>
-  <div class="alert alert-info"><i class="ti ti-info-circle"></i><div>Deshabilitar edición para facturas en estado <span class="badge badge-teal" style="font-size:11px">Pagada</span> y <span class="badge badge-gray" style="font-size:11px">Castigada</span>. Al registrar un pago desde el detalle, actualizar el saldo de forma reactiva sin recargar la página.</div></div>
+  <div class="alert alert-info"><i class="ti ti-info-circle"></i><div>Deshabilitar edición para facturas en estado <span class="badge badge-teal" style="font-size:11px">Pagada</span> y <span class="badge badge-gray" style="font-size:11px">Castigada</span>. Al registrar un pago, actualizar el saldo reactivamente sin recargar la página.</div></div>
   <h2>Pagos — lógica de UI</h2>
-  <div class="card"><ul style="list-style:none;display:flex;flex-direction:column;gap:7px;font-size:13px;color:var(--muted)">
-    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:6px"></i>Mostrar saldo pendiente de la factura seleccionada en tiempo real</li>
-    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:6px"></i>Validar que el valor pagado no exceda el saldo pendiente</li>
-    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:6px"></i>Emitir alerta visual si el pago cubre la totalidad de la factura</li>
+  <div class="card"><ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--text)">
+    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:7px"></i>Mostrar saldo pendiente de la factura seleccionada en tiempo real</li>
+    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:7px"></i>Validar que el valor pagado no exceda el saldo pendiente</li>
+    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:7px"></i>Emitir alerta si el pago cubre la totalidad de la factura (cambio a Pagada)</li>
   </ul></div>
-  <h2>Cartera</h2>
-  <p>Clasificación por antigüedad con resalte visual. Permitir crear un acuerdo de pago directamente desde la vista de cartera vencida. Exportar a Excel/PDF mediante el endpoint de exportación del backend.</p>
   <h2>Reportes — planes</h2>
   <table class="tech-table">
     <thead><tr><th>Reporte</th><th>Plan mínimo</th></tr></thead>
@@ -348,10 +347,9 @@ VITE_APP_NAME=GesCartera</pre>
 
 <!-- FE STATE -->
 <div class="page" id="page-fe-state">
-  <div class="topbar"><div class="topbar-left"><h1>Frontend — estado y routing</h1><p class="subtitle" style="margin-top:4px">Pinia · Vue Router · Axios interceptors</p></div><span class="badge badge-purple">Frontend</span></div>
-  <h2>Estructura de un store Pinia</h2>
-  <pre>// stores/clientes.store.js
-export const useClientesStore = defineStore('clientes', {
+  <div class="topbar"><div><h1>Frontend — estado y routing</h1><p class="subtitle">Pinia · Vue Router · Axios interceptors</p></div><span class="badge badge-purple">Frontend</span></div>
+  <h2>Store Pinia — estructura estándar</h2>
+  <pre>export const useClientesStore = defineStore('clientes', {
   state: () => ({
     clientes: [],
     clienteActual: null,
@@ -387,38 +385,38 @@ export const useClientesStore = defineStore('clientes', {
   res => res,
   async err => {
     if (err.response?.status === 401) {
-      await useAuthStore().refresh()  // Llama POST /auth/refresh
+      await useAuthStore().refresh()  // POST /auth/refresh
     }
     return Promise.reject(err)
   }
 )</pre>
-  <h2>Paginación estándar</h2>
-  <p>Todos los listados usan paginación del lado del servidor con parámetros <code>page</code> y <code>per_page</code> en la query. La respuesta siempre incluye el objeto <code>pagination</code> con <code>total</code> y <code>pages</code>.</p>
+  <h2>Paginación</h2>
+  <p style="color:var(--text)">Todos los listados usan paginación del lado del servidor con parámetros <code>page</code> y <code>per_page</code>. La respuesta incluye el objeto <code>pagination</code> con <code>total</code> y <code>pages</code>.</p>
 </div>
 
 <!-- FE SECURITY -->
 <div class="page" id="page-fe-security">
-  <div class="topbar"><div class="topbar-left"><h1>Frontend — auth y control de planes</h1></div><span class="badge badge-purple">Frontend</span></div>
+  <div class="topbar"><div><h1>Frontend — auth y control de planes</h1></div><span class="badge badge-purple">Frontend</span></div>
   <h2>Control de acceso por plan</h2>
   <pre>// utils/usePlan.js
 export function usePlan() {
   const auth = useAuthStore()
-  const plan = auth.empresa?.plan
-
+  const plan = auth.empresa?.plan  // 'basico' | 'profesional' | 'enterprise'
   return {
-    tieneIA:               plan === 'enterprise',
+    tieneIA:                plan === 'enterprise',
     tieneReportesAvanzados: ['profesional','enterprise'].includes(plan),
     tieneExportacion:       ['profesional','enterprise'].includes(plan),
   }
-}</pre>
-  <pre>// Uso en componente
+}
+
+// Uso en componente:
 const { tieneIA } = usePlan()
 // &lt;SeccionIA v-if="tieneIA" /&gt;
 // &lt;BannerUpgrade v-else /&gt;</pre>
-  <div class="alert alert-danger"><i class="ti ti-alert-circle"></i><div>El control de planes en el frontend es solo presentación. La validación real y el bloqueo de acceso ocurren en el backend mediante el decorador <code>@requiere_plan</code>.</div></div>
-  <h2>Roles y permisos de UI</h2>
+  <div class="alert alert-danger"><i class="ti ti-alert-circle"></i><div>El control de planes en el frontend es solo presentación. La validación real ocurre en el backend con <code>@requiere_plan</code>. Nunca asumir que el frontend es suficiente para proteger endpoints.</div></div>
+  <h2>Permisos por rol</h2>
   <table class="tech-table">
-    <thead><tr><th>Rol</th><th>Puede crear</th><th>Puede editar</th><th>Puede exportar</th><th>Config empresa</th></tr></thead>
+    <thead><tr><th>Rol</th><th>Crear</th><th>Editar</th><th>Exportar</th><th>Config empresa</th></tr></thead>
     <tbody>
       <tr><td>admin</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
       <tr><td>supervisor</td><td>✓</td><td>✓</td><td>✓</td><td>—</td></tr>
@@ -430,23 +428,24 @@ const { tieneIA } = usePlan()
 
 <!-- BE STACK -->
 <div class="page" id="page-be-stack">
-  <div class="topbar"><div class="topbar-left"><h1>Backend — stack y estructura</h1><p class="subtitle" style="margin-top:4px">Python · Flask · PostgreSQL</p></div><span class="badge badge-teal">Backend</span></div>
+  <div class="topbar"><div><h1>Backend — stack y estructura</h1><p class="subtitle">Python · Flask · PostgreSQL</p></div><span class="badge badge-teal">Backend</span></div>
   <h2>Stack tecnológico</h2>
   <table class="tech-table">
-    <thead><tr><th>Tecnología</th><th>Versión</th><th>Propósito</th></tr></thead>
+    <thead><tr><th>Tecnología</th><th>Versión</th><th>Propósito</th><th>Docs</th></tr></thead>
     <tbody>
-      <tr><td>Python</td><td>3.11+</td><td>Lenguaje principal</td></tr>
-      <tr><td>Flask</td><td>3.x</td><td>Framework web</td></tr>
-      <tr><td>Flask-RESTX</td><td>1.x</td><td>API REST + Swagger automático</td></tr>
-      <tr><td>SQLAlchemy</td><td>2.x</td><td>ORM</td></tr>
-      <tr><td>Alembic</td><td>1.x</td><td>Migraciones de base de datos</td></tr>
-      <tr><td>Marshmallow</td><td>3.x</td><td>Serialización y validación</td></tr>
-      <tr><td>Flask-JWT-Extended</td><td>4.x</td><td>Autenticación JWT</td></tr>
-      <tr><td>Argon2-cffi</td><td>—</td><td>Hash de contraseñas</td></tr>
-      <tr><td>Pandas / NumPy</td><td>—</td><td>Procesamiento de datos para IA</td></tr>
-      <tr><td>Scikit-Learn</td><td>—</td><td>Modelos de ML</td></tr>
-      <tr><td>XGBoost</td><td>—</td><td>Predicción de mora (opcional)</td></tr>
-      <tr><td>Gunicorn</td><td>—</td><td>Servidor WSGI en producción</td></tr>
+      <tr><td>Python</td><td>3.11+</td><td>Lenguaje principal</td><td><a href="https://docs.python.org/3" target="_blank">Documentación</a></td></tr>
+      <tr><td>Flask</td><td>3.x</td><td>Framework web</td><td><a href="https://flask.palletsprojects.com" target="_blank">Documentación</a></td></tr>
+      <tr><td>Flask-RESTX</td><td>1.x</td><td>API REST + Swagger automático</td><td><a href="https://flask-restx.readthedocs.io" target="_blank">Documentación</a></td></tr>
+      <tr><td>SQLAlchemy</td><td>2.x</td><td>ORM</td><td><a href="https://docs.sqlalchemy.org/en/20" target="_blank">Documentación</a></td></tr>
+      <tr><td>Alembic</td><td>1.x</td><td>Migraciones de base de datos</td><td><a href="https://alembic.sqlalchemy.org/en/latest" target="_blank">Documentación</a></td></tr>
+      <tr><td>Marshmallow</td><td>3.x</td><td>Serialización y validación</td><td><a href="https://marshmallow.readthedocs.io" target="_blank">Documentación</a></td></tr>
+      <tr><td>Flask-JWT-Extended</td><td>4.x</td><td>Autenticación JWT</td><td><a href="https://flask-jwt-extended.readthedocs.io" target="_blank">Documentación</a></td></tr>
+      <tr><td>Argon2-cffi</td><td>—</td><td>Hash de contraseñas</td><td><a href="https://argon2-cffi.readthedocs.io" target="_blank">Documentación</a></td></tr>
+      <tr><td>Pandas</td><td>—</td><td>Procesamiento de datos para IA</td><td><a href="https://pandas.pydata.org/docs" target="_blank">Documentación</a></td></tr>
+      <tr><td>Scikit-Learn</td><td>—</td><td>Modelos de Machine Learning</td><td><a href="https://scikit-learn.org/stable/user_guide.html" target="_blank">Documentación</a></td></tr>
+      <tr><td>XGBoost</td><td>—</td><td>Predicción de mora (opcional)</td><td><a href="https://xgboost.readthedocs.io" target="_blank">Documentación</a></td></tr>
+      <tr><td>Gunicorn</td><td>—</td><td>Servidor WSGI en producción</td><td><a href="https://docs.gunicorn.org" target="_blank">Documentación</a></td></tr>
+      <tr><td>Docker</td><td>—</td><td>Contenedorización</td><td><a href="https://docs.docker.com" target="_blank">Documentación</a></td></tr>
     </tbody>
   </table>
   <h2>Estructura de carpetas</h2>
@@ -459,37 +458,27 @@ const { tieneIA } = usePlan()
 │   ├── <span class="dir">models/</span>
 │   │   ├── empresa.py  · usuario.py  · cliente.py
 │   │   ├── factura.py  · pago.py     · acuerdo_pago.py
-│   │   ├── prediccion_ia.py          · audit_log.py
+│   │   └── prediccion_ia.py          · audit_log.py
 │   ├── <span class="dir">schemas/</span>         <span class="comment">// Marshmallow por entidad</span>
 │   ├── <span class="dir">api/</span>             <span class="comment">// Namespaces Flask-RESTX</span>
-│   │   ├── auth/  · empresas/  · usuarios/
-│   │   ├── clientes/  · facturas/  · pagos/
-│   │   ├── cartera/   · reportes/  · dashboard/
-│   │   └── ia/
+│   │   ├── auth/ · empresas/ · usuarios/
+│   │   ├── clientes/ · facturas/ · pagos/
+│   │   ├── cartera/ · reportes/ · dashboard/ · ia/
 │   ├── <span class="dir">services/</span>        <span class="comment">// Lógica de negocio desacoplada</span>
-│   │   ├── cartera.service.py
-│   │   ├── factura.service.py
-│   │   └── exportacion.service.py
 │   ├── <span class="dir">ia/</span>
 │   │   ├── prediccion_mora.py
 │   │   ├── segmentacion_clientes.py
 │   │   ├── reporte_inteligente.py
 │   │   └── <span class="dir">modelos/</span>   <span class="comment">// .pkl — modelos entrenados</span>
-│   ├── <span class="dir">middleware/</span>
-│   │   ├── tenant.py   <span class="comment">// empresa_id del JWT</span>
-│   │   ├── plan.py     <span class="comment">// validación de plan</span>
-│   │   └── audit.py
+│   ├── <span class="dir">middleware/</span>      <span class="comment">// tenant.py · plan.py · audit.py</span>
 │   └── <span class="dir">utils/</span>
 ├── <span class="dir">migrations/</span>           <span class="comment">// Alembic</span>
 ├── <span class="dir">tests/</span>
-├── .env
-├── requirements.txt
-├── Dockerfile
-└── wsgi.py</div>
+├── .env · requirements.txt · Dockerfile · wsgi.py</div>
   <h2>Variables de entorno</h2>
   <pre>FLASK_ENV=production
 DATABASE_URL=postgresql://user:pass@localhost:5432/cartera_db
-JWT_SECRET_KEY=&lt;clave generada con secrets.token_hex(32)&gt;
+JWT_SECRET_KEY=&lt;generado con secrets.token_hex(32)&gt;
 JWT_ACCESS_TOKEN_EXPIRES=900       # 15 minutos
 JWT_REFRESH_TOKEN_EXPIRES=604800   # 7 días
 CORS_ORIGINS=https://app.tudominio.com</pre>
@@ -497,66 +486,66 @@ CORS_ORIGINS=https://app.tudominio.com</pre>
 
 <!-- BE API -->
 <div class="page" id="page-be-api">
-  <div class="topbar"><div class="topbar-left"><h1>Backend — API REST</h1><p class="subtitle" style="margin-top:4px">Todos los endpoints requieren <code>Authorization: Bearer &lt;token&gt;</code></p></div><span class="badge badge-teal">Backend</span></div>
+  <div class="topbar"><div><h1>Backend — API REST</h1><p class="subtitle">Todos los endpoints requieren <code>Authorization: Bearer &lt;token&gt;</code></p></div><span class="badge badge-teal">Backend</span></div>
   <div class="search-wrap"><i class="ti ti-search"></i><input type="text" id="ep-search" placeholder="Buscar endpoint..." oninput="filterEndpoints()"/></div>
   <div id="endpoints-container">
   <h2>Autenticación</h2>
-  <div class="endpoint-group" data-group="auth">
-    <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/auth/login</div><div class="ep-desc">Inicio de sesión. Retorna access_token, refresh_token y datos del usuario y empresa.</div></div></div>
+  <div class="endpoint-group">
+    <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/auth/login</div><div class="ep-desc">Inicio de sesión. Retorna access_token, refresh_token, datos del usuario y empresa.</div></div></div>
     <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/auth/refresh</div><div class="ep-desc">Refrescar access token usando el refresh token.</div></div></div>
     <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/auth/logout</div><div class="ep-desc">Revocar token activo.</div></div></div>
     <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/auth/recuperar-password</div><div class="ep-desc">Solicitar correo de recuperación de contraseña.</div></div></div>
     <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/auth/reset-password</div><div class="ep-desc">Cambiar contraseña usando el token del correo.</div></div></div>
   </div>
   <h2>Clientes</h2>
-  <div class="endpoint-group" data-group="clientes">
-    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/clientes</div><div class="ep-desc">Listar clientes con paginación y filtros: estado, ciudad, nivel_riesgo, q (búsqueda).</div><div class="ep-roles"><span class="badge badge-gray">Todos los roles</span></div></div></div>
+  <div class="endpoint-group">
+    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/clientes</div><div class="ep-desc">Listar con filtros: estado, ciudad, nivel_riesgo, q (búsqueda texto).</div><div class="ep-roles"><span class="badge badge-gray">Todos los roles</span></div></div></div>
     <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/clientes</div><div class="ep-desc">Crear nuevo cliente.</div><div class="ep-roles"><span class="badge badge-purple">admin</span><span class="badge badge-blue">supervisor</span><span class="badge badge-amber">analista</span></div></div></div>
-    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/clientes/{id}</div><div class="ep-desc">Detalle de un cliente.</div><div class="ep-roles"><span class="badge badge-gray">Todos</span></div></div></div>
+    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/clientes/{id}</div><div class="ep-desc">Detalle del cliente.</div><div class="ep-roles"><span class="badge badge-gray">Todos</span></div></div></div>
     <div class="endpoint"><span class="method put">PUT</span><div><div class="ep-path">/api/v1/clientes/{id}</div><div class="ep-desc">Actualizar datos del cliente.</div><div class="ep-roles"><span class="badge badge-purple">admin</span><span class="badge badge-blue">supervisor</span><span class="badge badge-amber">analista</span></div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/clientes/{id}/historial</div><div class="ep-desc">Facturas y pagos del cliente.</div><div class="ep-roles"><span class="badge badge-gray">Todos</span></div></div></div>
-    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/clientes/{id}/prediccion</div><div class="ep-desc">Predicción de riesgo del cliente. Solo plan Enterprise.</div><div class="ep-roles"><span class="badge badge-teal">Enterprise</span></div></div></div>
+    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/clientes/{id}/prediccion</div><div class="ep-desc">Predicción de riesgo. Solo plan Enterprise.</div><div class="ep-roles"><span class="badge badge-teal">Enterprise</span></div></div></div>
   </div>
   <h2>Facturas</h2>
-  <div class="endpoint-group" data-group="facturas">
+  <div class="endpoint-group">
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/facturas</div><div class="ep-desc">Listar con filtros: estado, cliente_id, fecha_desde, fecha_hasta, vencida.</div><div class="ep-roles"><span class="badge badge-gray">Todos</span></div></div></div>
     <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/facturas</div><div class="ep-desc">Crear factura.</div><div class="ep-roles"><span class="badge badge-purple">admin</span><span class="badge badge-blue">supervisor</span><span class="badge badge-amber">analista</span></div></div></div>
-    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/facturas/{id}</div><div class="ep-desc">Detalle de factura con historial de pagos.</div><div class="ep-roles"><span class="badge badge-gray">Todos</span></div></div></div>
-    <div class="endpoint"><span class="method put">PUT</span><div><div class="ep-path">/api/v1/facturas/{id}</div><div class="ep-desc">Editar factura. No permitido si está en estado Pagada o Castigada.</div><div class="ep-roles"><span class="badge badge-purple">admin</span><span class="badge badge-blue">supervisor</span></div></div></div>
+    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/facturas/{id}</div><div class="ep-desc">Detalle con historial de pagos y saldo.</div><div class="ep-roles"><span class="badge badge-gray">Todos</span></div></div></div>
+    <div class="endpoint"><span class="method put">PUT</span><div><div class="ep-path">/api/v1/facturas/{id}</div><div class="ep-desc">Editar. Bloqueado si estado es Pagada o Castigada.</div><div class="ep-roles"><span class="badge badge-purple">admin</span><span class="badge badge-blue">supervisor</span></div></div></div>
     <div class="endpoint"><span class="method patch">PATCH</span><div><div class="ep-path">/api/v1/facturas/{id}/estado</div><div class="ep-desc">Cambiar estado manualmente.</div><div class="ep-roles"><span class="badge badge-purple">admin</span><span class="badge badge-blue">supervisor</span></div></div></div>
   </div>
   <h2>Pagos</h2>
-  <div class="endpoint-group" data-group="pagos">
+  <div class="endpoint-group">
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/pagos</div><div class="ep-desc">Historial de pagos con paginación.</div><div class="ep-roles"><span class="badge badge-gray">Todos</span></div></div></div>
-    <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/pagos</div><div class="ep-desc">Registrar pago o abono parcial. Actualiza automáticamente el saldo de la factura.</div><div class="ep-roles"><span class="badge badge-gray">Todos los roles</span></div></div></div>
+    <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/pagos</div><div class="ep-desc">Registrar pago o abono. Actualiza saldo de la factura automáticamente (trigger BD).</div><div class="ep-roles"><span class="badge badge-gray">Todos los roles</span></div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/pagos/{id}</div><div class="ep-desc">Detalle de un pago.</div><div class="ep-roles"><span class="badge badge-gray">Todos</span></div></div></div>
   </div>
   <h2>Cartera</h2>
-  <div class="endpoint-group" data-group="cartera">
-    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/cartera/resumen</div><div class="ep-desc">Totales por rango de antigüedad (0–30, 31–60, 61–90, +90 días).</div></div></div>
+  <div class="endpoint-group">
+    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/cartera/resumen</div><div class="ep-desc">Totales por rango de antigüedad: 0–30, 31–60, 61–90, +90 días.</div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/cartera/vencida</div><div class="ep-desc">Facturas vencidas paginadas con clasificación de antigüedad.</div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/cartera/morosos</div><div class="ep-desc">Clientes con deuda vencida.</div></div></div>
     <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/cartera/acuerdos</div><div class="ep-desc">Crear acuerdo de pago.</div><div class="ep-roles"><span class="badge badge-purple">admin</span><span class="badge badge-blue">supervisor</span><span class="badge badge-amber">analista</span></div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/cartera/acuerdos</div><div class="ep-desc">Listar acuerdos de pago.</div></div></div>
   </div>
   <h2>Dashboard</h2>
-  <div class="endpoint-group" data-group="dashboard">
-    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/dashboard/resumen</div><div class="ep-desc">KPIs principales: cartera total, vencida, recaudo, facturas pendientes, clientes morosos, % recuperación.</div></div></div>
-    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/dashboard/graficas</div><div class="ep-desc">Datos históricos para gráficas (parámetro meses=6|12).</div></div></div>
+  <div class="endpoint-group">
+    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/dashboard/resumen</div><div class="ep-desc">KPIs: cartera total, vencida, recaudo, facturas pendientes, clientes morosos, % recuperación.</div></div></div>
+    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/dashboard/graficas</div><div class="ep-desc">Series históricas para gráficas. Param: <code>?meses=6</code> o <code>?meses=12</code>.</div></div></div>
   </div>
   <h2>Reportes</h2>
-  <div class="endpoint-group" data-group="reportes">
+  <div class="endpoint-group">
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/reportes/cartera</div><div class="ep-desc">Reporte de cartera general.</div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/reportes/cartera-vencida</div><div class="ep-desc">Reporte de cartera vencida.</div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/reportes/recaudo</div><div class="ep-desc">Reporte de recaudo por período.</div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/reportes/morosos</div><div class="ep-desc">Reporte de clientes morosos.</div></div></div>
-    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/reportes/{tipo}/exportar</div><div class="ep-desc">Exportar a PDF o Excel. Query param: <code>?formato=pdf</code> o <code>?formato=excel</code>.</div><div class="ep-roles"><span class="badge badge-purple">Profesional</span><span class="badge badge-teal">Enterprise</span></div></div></div>
+    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/reportes/{tipo}/exportar</div><div class="ep-desc">Exportar a PDF o Excel. Param: <code>?formato=pdf</code> · <code>?formato=excel</code>.</div><div class="ep-roles"><span class="badge badge-purple">Profesional</span><span class="badge badge-teal">Enterprise</span></div></div></div>
   </div>
-  <h2>Inteligencia artificial <span class="badge badge-teal" style="vertical-align:middle">Solo Enterprise</span></h2>
-  <div class="endpoint-group" data-group="ia">
-    <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/ia/predecir-mora</div><div class="ep-desc">Ejecutar predicción de mora para un cliente específico.</div></div></div>
+  <h2>Inteligencia artificial <span class="badge badge-teal" style="vertical-align:middle;margin-left:6px">Solo Enterprise</span></h2>
+  <div class="endpoint-group">
+    <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/ia/predecir-mora</div><div class="ep-desc">Ejecutar predicción de mora para un cliente.</div></div></div>
     <div class="endpoint"><span class="method post">POST</span><div><div class="ep-path">/api/v1/ia/predecir-mora/lote</div><div class="ep-desc">Predicción masiva para todos los clientes de la empresa.</div></div></div>
-    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/ia/segmentacion</div><div class="ep-desc">Segmentación actual de clientes: excelente · bueno · ocasional · riesgo · crítico.</div></div></div>
+    <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/ia/segmentacion</div><div class="ep-desc">Segmentación actual: excelente · bueno · ocasional · riesgo · crítico.</div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/ia/reporte-inteligente</div><div class="ep-desc">Narrativa generada automáticamente con análisis de cartera.</div></div></div>
     <div class="endpoint"><span class="method get">GET</span><div><div class="ep-path">/api/v1/ia/recomendaciones</div><div class="ep-desc">Acciones sugeridas de cobranza para la empresa.</div></div></div>
   </div>
@@ -565,40 +554,34 @@ CORS_ORIGINS=https://app.tudominio.com</pre>
 
 <!-- BE SECURITY -->
 <div class="page" id="page-be-security">
-  <div class="topbar"><div class="topbar-left"><h1>Backend — seguridad y JWT</h1></div><span class="badge badge-teal">Backend</span></div>
+  <div class="topbar"><div><h1>Backend — seguridad y JWT</h1></div><span class="badge badge-teal">Backend</span></div>
   <h2>Tokens JWT</h2>
   <table class="tech-table">
-    <thead><tr><th>Token</th><th>Vigencia</th><th>Contenido</th></tr></thead>
+    <thead><tr><th>Token</th><th>Vigencia</th><th>Payload</th></tr></thead>
     <tbody>
       <tr><td>access_token</td><td>15 minutos</td><td>user_id, empresa_id, rol, plan</td></tr>
       <tr><td>refresh_token</td><td>7 días</td><td>user_id</td></tr>
     </tbody>
   </table>
-  <div class="alert alert-danger"><i class="ti ti-alert-circle"></i><div>El <code>empresa_id</code> se extrae siempre del JWT. Nunca aceptarlo como parámetro de la request. Todo query de base de datos lleva <code>filter_by(empresa_id=get_empresa_id())</code>.</div></div>
+  <div class="alert alert-danger"><i class="ti ti-alert-circle"></i><div>El <code>empresa_id</code> se extrae siempre del JWT — nunca de la request. Todo query lleva <code>filter_by(empresa_id=get_empresa_id())</code>. Un query sin este filtro es un bug de seguridad crítico.</div></div>
   <h2>Decoradores de control de acceso</h2>
-  <pre>@requiere_roles('admin', 'supervisor')    # Validación de rol
-@requiere_plan('enterprise')              # Validación de plan comercial
-
-# Ejemplo combinado:
-@jwt_required()
+  <pre>@jwt_required()
 @requiere_roles('admin', 'supervisor', 'analista')
 @requiere_plan('enterprise')
 def post(self):
     ...</pre>
   <h2>Regla de aislamiento multiempresa</h2>
-  <pre># CORRECTO — siempre filtrar por empresa_id del token
+  <pre># CORRECTO
 Cliente.query.filter_by(id=cliente_id, empresa_id=get_empresa_id()).first()
 
-# INCORRECTO — nunca consultar sin empresa_id
+# INCORRECTO — nunca sin empresa_id
 Cliente.query.filter_by(id=cliente_id).first()</pre>
-  <h2>Contraseñas</h2>
+  <h2>Hash de contraseñas (Argon2id)</h2>
   <pre>from argon2 import PasswordHasher
 ph = PasswordHasher()
-
-hashear_password  = lambda pwd: ph.hash(pwd)
-verificar_password = lambda h, pwd: ph.verify(h, pwd)</pre>
-  <h2>Auditoría obligatoria</h2>
-  <p>Las siguientes acciones deben registrarse en <code>audit_log</code> sin excepción:</p>
+hashear   = lambda pwd: ph.hash(pwd)
+verificar = lambda h, pwd: ph.verify(h, pwd)</pre>
+  <h2>Acciones auditadas obligatoriamente</h2>
   <div class="card" style="display:flex;gap:8px;flex-wrap:wrap">
     <span class="badge badge-gray">LOGIN</span><span class="badge badge-gray">CREATE_FACTURA</span><span class="badge badge-gray">REGISTER_PAGO</span><span class="badge badge-gray">UPDATE_FACTURA</span><span class="badge badge-gray">DELETE_CLIENTE</span><span class="badge badge-gray">CAMBIO_ESTADO</span><span class="badge badge-gray">EJECUTAR_IA</span><span class="badge badge-gray">EXPORTAR_REPORTE</span>
   </div>
@@ -607,10 +590,10 @@ verificar_password = lambda h, pwd: ph.verify(h, pwd)</pre>
     <thead><tr><th>Protección</th><th>Implementación</th></tr></thead>
     <tbody>
       <tr><td>SQL Injection</td><td>SQLAlchemy ORM — nunca queries en string raw</td></tr>
-      <tr><td>XSS</td><td>Marshmallow sanitiza inputs; respuestas JSON no ejecutan scripts</td></tr>
-      <tr><td>CSRF</td><td>API stateless con JWT — CSRF no aplica; CORS restringido por origen</td></tr>
+      <tr><td>XSS</td><td>Marshmallow sanitiza inputs · Respuestas JSON</td></tr>
+      <tr><td>CSRF</td><td>API stateless con JWT · CORS restringido por origen</td></tr>
       <tr><td>Fuerza bruta</td><td>Rate limiting en endpoints de auth</td></tr>
-      <tr><td>Contraseñas</td><td>Argon2id — el hash más seguro disponible</td></tr>
+      <tr><td>Contraseñas</td><td>Argon2id — estándar de seguridad actual</td></tr>
       <tr><td>Transporte</td><td>HTTPS obligatorio en producción</td></tr>
     </tbody>
   </table>
@@ -618,25 +601,25 @@ verificar_password = lambda h, pwd: ph.verify(h, pwd)</pre>
 
 <!-- BE IA -->
 <div class="page" id="page-be-ia">
-  <div class="topbar"><div class="topbar-left"><h1>Backend — módulo de IA</h1><p class="subtitle" style="margin-top:4px">Solo plan Enterprise · Scikit-Learn · XGBoost</p></div><span class="badge badge-teal">Backend</span></div>
-  <div class="alert alert-warn"><i class="ti ti-alert-triangle"></i><div>Los modelos de IA requieren datos históricos reales para ser útiles. En una instalación nueva, la IA no tiene valor predictivo hasta acumular al menos 3–6 meses de historial de pagos y mora.</div></div>
-  <h2>Predicción de mora — variables</h2>
+  <div class="topbar"><div><h1>Backend — módulo de IA</h1><p class="subtitle">Solo plan Enterprise · Scikit-Learn · XGBoost</p></div><span class="badge badge-teal">Backend</span></div>
+  <div class="alert alert-warn"><i class="ti ti-alert-triangle"></i><div>Los modelos requieren datos históricos reales. En una instalación nueva la IA no tiene valor predictivo hasta acumular 3–6 meses de historial de pagos.</div></div>
+  <h2>Variables del modelo de predicción</h2>
   <table class="tech-table">
     <thead><tr><th>Variable</th><th>Tipo</th><th>Descripción</th></tr></thead>
     <tbody>
-      <tr><td>facturas_vencidas_total</td><td>int</td><td>Número total de facturas que alguna vez estuvieron vencidas</td></tr>
+      <tr><td>facturas_vencidas_total</td><td>int</td><td>Facturas que alguna vez estuvieron vencidas</td></tr>
       <tr><td>valor_deuda_acumulada</td><td>decimal</td><td>Suma de saldos pendientes actuales</td></tr>
-      <tr><td>frecuencia_mora</td><td>float 0–1</td><td>Proporción de facturas históricas que entraron en mora</td></tr>
-      <tr><td>dias_promedio_retraso</td><td>int</td><td>Promedio de días de retraso en pagos históricos</td></tr>
+      <tr><td>frecuencia_mora</td><td>float 0–1</td><td>Proporción de facturas que entraron en mora</td></tr>
+      <tr><td>dias_promedio_retraso</td><td>int</td><td>Promedio de días de retraso en pagos</td></tr>
       <tr><td>antiguedad_dias</td><td>int</td><td>Días desde la creación del cliente</td></tr>
       <tr><td>facturas_pagadas_total</td><td>int</td><td>Facturas saldadas correctamente</td></tr>
     </tbody>
   </table>
   <h2>Niveles de riesgo</h2>
-  <div class="card" style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-    <div><span class="badge badge-teal" style="margin-right:6px">Bajo</span> score &lt; 0.30</div>
-    <div><span class="badge badge-amber" style="margin-right:6px">Medio</span> score 0.30–0.65</div>
-    <div><span class="badge badge-red" style="margin-right:6px">Alto</span> score &gt; 0.65</div>
+  <div class="card" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+    <div><span class="badge badge-teal" style="margin-right:8px">Bajo</span><span style="color:var(--muted);font-size:13px">score &lt; 0.30</span></div>
+    <div><span class="badge badge-amber" style="margin-right:8px">Medio</span><span style="color:var(--muted);font-size:13px">score 0.30–0.65</span></div>
+    <div><span class="badge badge-red" style="margin-right:8px">Alto</span><span style="color:var(--muted);font-size:13px">score &gt; 0.65</span></div>
   </div>
   <h2>Segmentación de clientes</h2>
   <table class="tech-table">
@@ -649,31 +632,32 @@ verificar_password = lambda h, pwd: ph.verify(h, pwd)</pre>
       <tr><td>Cliente crítico</td><td>Score &gt; 0.65</td></tr>
     </tbody>
   </table>
-  <h2>Reportes inteligentes — ejemplos de narrativa</h2>
-  <div class="card"><p style="font-style:italic;color:var(--muted);font-size:13px;margin-bottom:8px">"El 72% de la cartera vencida corresponde a clientes con más de 90 días de mora."</p><p style="font-style:italic;color:var(--muted);font-size:13px;margin-bottom:8px">"Se observa un incremento del 15% en la cartera vencida durante el último trimestre."</p><p style="font-style:italic;color:var(--muted);font-size:13px;margin:0">"Se recomienda priorizar acciones de cobro sobre los 20 clientes con mayor nivel de riesgo."</p></div>
-  <h2>Versionado de modelos</h2>
-  <p>Cada predicción guarda el campo <code>version_modelo</code> en <code>predicciones_ia</code>. Esto permite comparar resultados entre versiones del modelo al reentrenarlo.</p>
+  <h2>Ejemplo de narrativa generada</h2>
+  <div class="card" style="border-left:3px solid var(--accent)">
+    <p style="font-style:italic;color:var(--text);font-size:13.5px;margin-bottom:6px">"El 72% de la cartera vencida corresponde a clientes con más de 90 días de mora."</p>
+    <p style="font-style:italic;color:var(--text);font-size:13.5px;margin-bottom:6px">"Se observa un incremento del 15% en la cartera vencida durante el último trimestre."</p>
+    <p style="font-style:italic;color:var(--text);font-size:13.5px;margin:0">"Se recomienda priorizar acciones de cobro sobre los 20 clientes con mayor nivel de riesgo."</p>
+  </div>
 </div>
 
 <!-- DB MODEL -->
 <div class="page" id="page-db-model">
-  <div class="topbar"><div class="topbar-left"><h1>Base de datos — modelo de datos</h1><p class="subtitle" style="margin-top:4px">PostgreSQL 15+ · 10 tablas · ENUMs · Constraints</p></div><span class="badge badge-amber">Base de datos</span></div>
+  <div class="topbar"><div><h1>Base de datos — modelo de datos</h1><p class="subtitle">PostgreSQL 15+ · 10 tablas · ENUMs · Constraints</p></div><span class="badge badge-amber">Base de datos</span></div>
   <h2>Tipos enumerados (ENUMs)</h2>
   <div class="card" style="display:flex;gap:8px;flex-wrap:wrap">
     <code>plan_empresa</code><code>rol_usuario</code><code>estado_cliente</code><code>estado_factura</code><code>metodo_pago</code><code>estado_acuerdo</code><code>nivel_riesgo</code><code>segmento_cliente</code><code>accion_audit</code>
   </div>
-
   <h2>Tablas</h2>
 
   <div class="db-table-card">
     <div class="db-table-header"><i class="ti ti-building" style="color:var(--accent)"></i><span class="db-table-name">empresas</span><span class="db-table-desc">Tenants del sistema</span></div>
-    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Notas</th></tr></thead><tbody>
-      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>PK</td></tr>
+    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Restricciones / Notas</th></tr></thead><tbody>
+      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>Primary key</td></tr>
       <tr><td>nombre</td><td>VARCHAR(200)</td><td><span class="nn">NOT NULL</span></td></tr>
       <tr><td>nit</td><td>VARCHAR(30)</td><td><span class="nn">NOT NULL</span> <span class="uq">UNIQUE</span></td></tr>
-      <tr><td>plan</td><td>plan_empresa</td><td>basico | profesional | enterprise</td></tr>
-      <tr><td>dias_alerta_vencimiento</td><td>INT</td><td>Default 5</td></tr>
-      <tr><td>tasa_mora_mensual</td><td>NUMERIC(5,2)</td><td>Configurable por empresa</td></tr>
+      <tr><td>plan</td><td>plan_empresa</td><td>basico | profesional | enterprise · Default: basico</td></tr>
+      <tr><td>dias_alerta_vencimiento</td><td>INT</td><td>Default 5 · Configurable por empresa</td></tr>
+      <tr><td>tasa_mora_mensual</td><td>NUMERIC(5,2)</td><td>Default 0.00</td></tr>
       <tr><td>activa</td><td>BOOLEAN</td><td>Default TRUE</td></tr>
       <tr><td>creada_en / actualizada_en</td><td>TIMESTAMPTZ</td><td>Auto-updated por trigger</td></tr>
     </tbody></table>
@@ -681,36 +665,37 @@ verificar_password = lambda h, pwd: ph.verify(h, pwd)</pre>
 
   <div class="db-table-card">
     <div class="db-table-header"><i class="ti ti-users" style="color:var(--accent)"></i><span class="db-table-name">usuarios</span><span class="db-table-desc">Usuarios internos por empresa</span></div>
-    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Notas</th></tr></thead><tbody>
-      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>PK</td></tr>
-      <tr><td><i class="ti ti-link fk-icon"></i>empresa_id</td><td>INT</td><td>FK → empresas</td></tr>
-      <tr><td>correo</td><td>VARCHAR(150)</td><td><span class="uq">UNIQUE por empresa</span></td></tr>
-      <tr><td>password_hash</td><td>VARCHAR(256)</td><td>Argon2id</td></tr>
+    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Restricciones / Notas</th></tr></thead><tbody>
+      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>Primary key</td></tr>
+      <tr><td><i class="ti ti-link fk-icon"></i>empresa_id</td><td>INT</td><td>FK → empresas ON DELETE CASCADE</td></tr>
+      <tr><td>correo</td><td>VARCHAR(150)</td><td><span class="uq">UNIQUE (empresa_id, correo)</span></td></tr>
+      <tr><td>password_hash</td><td>VARCHAR(256)</td><td><span class="nn">NOT NULL</span> · Hash Argon2id</td></tr>
       <tr><td>rol</td><td>rol_usuario</td><td>admin | supervisor | analista | operador</td></tr>
-      <tr><td>ultimo_login</td><td>TIMESTAMPTZ</td><td>Nullable</td></tr>
+      <tr><td>ultimo_login</td><td>TIMESTAMPTZ</td><td>Nullable · Se actualiza en cada login</td></tr>
     </tbody></table>
   </div>
 
   <div class="db-table-card">
     <div class="db-table-header"><i class="ti ti-user-circle" style="color:var(--accent2)"></i><span class="db-table-name">clientes</span><span class="db-table-desc">Clientes de cada empresa</span></div>
-    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Notas</th></tr></thead><tbody>
-      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>PK</td></tr>
-      <tr><td><i class="ti ti-link fk-icon"></i>empresa_id</td><td>INT</td><td>FK → empresas</td></tr>
+    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Restricciones / Notas</th></tr></thead><tbody>
+      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>Primary key</td></tr>
+      <tr><td><i class="ti ti-link fk-icon"></i>empresa_id</td><td>INT</td><td>FK → empresas ON DELETE CASCADE</td></tr>
       <tr><td>documento</td><td>VARCHAR(30)</td><td><span class="uq">UNIQUE (empresa_id, documento)</span></td></tr>
       <tr><td>tipo_documento</td><td>VARCHAR(20)</td><td>NIT | CC | CE | Pasaporte</td></tr>
-      <tr><td>estado</td><td>estado_cliente</td><td>activo | inactivo</td></tr>
+      <tr><td>estado</td><td>estado_cliente</td><td>activo | inactivo · Default: activo</td></tr>
+      <tr><td>nombre, correo, telefono, ciudad</td><td>VARCHAR</td><td>Datos de contacto</td></tr>
     </tbody></table>
   </div>
 
   <div class="db-table-card">
-    <div class="db-table-header"><i class="ti ti-file-invoice" style="color:#185FA5"></i><span class="db-table-name">facturas</span><span class="db-table-desc">Facturas emitidas</span></div>
-    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Notas</th></tr></thead><tbody>
-      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>PK</td></tr>
+    <div class="db-table-header"><i class="ti ti-file-invoice" style="color:var(--blue)"></i><span class="db-table-name">facturas</span><span class="db-table-desc">Facturas emitidas</span></div>
+    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Restricciones / Notas</th></tr></thead><tbody>
+      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>Primary key</td></tr>
       <tr><td><i class="ti ti-link fk-icon"></i>empresa_id</td><td>INT</td><td>FK → empresas</td></tr>
-      <tr><td><i class="ti ti-link fk-icon"></i>cliente_id</td><td>INT</td><td>FK → clientes</td></tr>
+      <tr><td><i class="ti ti-link fk-icon"></i>cliente_id</td><td>INT</td><td>FK → clientes ON DELETE RESTRICT</td></tr>
       <tr><td>numero</td><td>VARCHAR(50)</td><td><span class="uq">UNIQUE (empresa_id, numero)</span></td></tr>
       <tr><td>valor_total</td><td>NUMERIC(18,2)</td><td>CHECK &gt; 0</td></tr>
-      <tr><td>saldo_pendiente</td><td>NUMERIC(18,2)</td><td>CHECK ≤ valor_total. Actualizado por trigger.</td></tr>
+      <tr><td>saldo_pendiente</td><td>NUMERIC(18,2)</td><td>CHECK ≤ valor_total · Actualizado por trigger al insertar pago</td></tr>
       <tr><td>estado</td><td>estado_factura</td><td>pendiente | pagada | vencida | en_cobro | castigada</td></tr>
       <tr><td>fecha_vencimiento</td><td>DATE</td><td>CHECK ≥ fecha_emision</td></tr>
     </tbody></table>
@@ -718,21 +703,23 @@ verificar_password = lambda h, pwd: ph.verify(h, pwd)</pre>
 
   <div class="db-table-card">
     <div class="db-table-header"><i class="ti ti-cash" style="color:var(--accent2)"></i><span class="db-table-name">pagos</span><span class="db-table-desc">Pagos y abonos parciales</span></div>
-    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Notas</th></tr></thead><tbody>
-      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>PK</td></tr>
+    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Restricciones / Notas</th></tr></thead><tbody>
+      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>Primary key</td></tr>
+      <tr><td><i class="ti ti-link fk-icon"></i>empresa_id</td><td>INT</td><td>FK → empresas</td></tr>
       <tr><td><i class="ti ti-link fk-icon"></i>factura_id</td><td>INT</td><td>FK → facturas ON DELETE RESTRICT</td></tr>
-      <tr><td>valor_pagado</td><td>NUMERIC(18,2)</td><td>CHECK &gt; 0. El trigger valida que no exceda el saldo.</td></tr>
+      <tr><td>valor_pagado</td><td>NUMERIC(18,2)</td><td>CHECK &gt; 0 · El trigger valida que no exceda el saldo</td></tr>
       <tr><td>metodo_pago</td><td>metodo_pago</td><td>efectivo | transferencia | cheque | tarjeta | otro</td></tr>
-      <tr><td>referencia</td><td>VARCHAR(100)</td><td>Número de transacción / cheque</td></tr>
-      <tr><td>registrado_por</td><td>INT</td><td>FK → usuarios ON DELETE SET NULL</td></tr>
+      <tr><td>referencia</td><td>VARCHAR(100)</td><td>Número de transacción / cheque · Nullable</td></tr>
+      <tr><td><i class="ti ti-link fk-icon"></i>registrado_por</td><td>INT</td><td>FK → usuarios ON DELETE SET NULL</td></tr>
     </tbody></table>
   </div>
 
   <div class="db-table-card">
-    <div class="db-table-header"><i class="ti ti-handshake" style="color:#854F0B"></i><span class="db-table-name">acuerdos_pago</span><span class="db-table-desc">Acuerdos de refinanciación</span></div>
-    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Notas</th></tr></thead><tbody>
-      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>PK</td></tr>
+    <div class="db-table-header"><i class="ti ti-handshake" style="color:var(--amber)"></i><span class="db-table-name">acuerdos_pago</span><span class="db-table-desc">Acuerdos de refinanciación</span></div>
+    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Restricciones / Notas</th></tr></thead><tbody>
+      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>SERIAL</td><td>Primary key</td></tr>
       <tr><td><i class="ti ti-link fk-icon"></i>cliente_id</td><td>INT</td><td>FK → clientes</td></tr>
+      <tr><td>monto_total</td><td>NUMERIC(18,2)</td><td>CHECK &gt; 0</td></tr>
       <tr><td>cuotas</td><td>INT</td><td>CHECK ≥ 1</td></tr>
       <tr><td>valor_cuota</td><td>NUMERIC(18,2)</td><td>CHECK &gt; 0</td></tr>
       <tr><td>estado</td><td>estado_acuerdo</td><td>vigente | cumplido | incumplido</td></tr>
@@ -740,69 +727,85 @@ verificar_password = lambda h, pwd: ph.verify(h, pwd)</pre>
   </div>
 
   <div class="db-table-card">
-    <div class="db-table-header"><i class="ti ti-brain" style="color:var(--accent)"></i><span class="db-table-name">predicciones_ia</span><span class="db-table-desc">Historial de predicciones — solo Enterprise</span></div>
+    <div class="db-table-header"><i class="ti ti-git-merge" style="color:var(--muted)"></i><span class="db-table-name">acuerdo_facturas</span><span class="db-table-desc">Facturas incluidas en un acuerdo (N:M)</span></div>
     <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Notas</th></tr></thead><tbody>
-      <tr><td><i class="ti ti-link fk-icon"></i>cliente_id</td><td>INT</td><td>FK → clientes</td></tr>
-      <tr><td>nivel_riesgo</td><td>nivel_riesgo</td><td>bajo | medio | alto</td></tr>
-      <tr><td>segmento</td><td>segmento_cliente</td><td>excelente | bueno | ocasional | riesgo | critico</td></tr>
-      <tr><td>score</td><td>NUMERIC(6,4)</td><td>CHECK BETWEEN 0 AND 1</td></tr>
-      <tr><td>version_modelo</td><td>VARCHAR(20)</td><td>Trazabilidad de reentrenamiento</td></tr>
-      <tr><td>variables_json</td><td>— (columnas)</td><td>Snapshot de variables: deuda, mora, retraso, etc.</td></tr>
+      <tr><td><i class="ti ti-link fk-icon"></i>acuerdo_id</td><td>INT</td><td>FK → acuerdos_pago · PK compuesta</td></tr>
+      <tr><td><i class="ti ti-link fk-icon"></i>factura_id</td><td>INT</td><td>FK → facturas · PK compuesta</td></tr>
     </tbody></table>
   </div>
 
   <div class="db-table-card">
-    <div class="db-table-header"><i class="ti ti-shield-check" style="color:var(--muted)"></i><span class="db-table-name">audit_log</span><span class="db-table-desc">Registro inmutable de acciones</span></div>
+    <div class="db-table-header"><i class="ti ti-brain" style="color:var(--accent)"></i><span class="db-table-name">predicciones_ia</span><span class="db-table-desc">Historial de predicciones — solo Enterprise</span></div>
+    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Restricciones / Notas</th></tr></thead><tbody>
+      <tr><td><i class="ti ti-link fk-icon"></i>cliente_id</td><td>INT</td><td>FK → clientes</td></tr>
+      <tr><td>nivel_riesgo</td><td>nivel_riesgo</td><td>bajo | medio | alto</td></tr>
+      <tr><td>segmento</td><td>segmento_cliente</td><td>excelente | bueno | ocasional | riesgo | critico</td></tr>
+      <tr><td>score</td><td>NUMERIC(6,4)</td><td>CHECK BETWEEN 0 AND 1</td></tr>
+      <tr><td>version_modelo</td><td>VARCHAR(20)</td><td>Trazabilidad al reentrenar el modelo</td></tr>
+      <tr><td>variables (6 columnas)</td><td>INT / NUMERIC</td><td>Snapshot de variables usadas en la predicción</td></tr>
+    </tbody></table>
+  </div>
+
+  <div class="db-table-card">
+    <div class="db-table-header"><i class="ti ti-file-text" style="color:var(--muted)"></i><span class="db-table-name">reportes</span><span class="db-table-desc">Metadata de reportes generados</span></div>
     <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Notas</th></tr></thead><tbody>
-      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>BIGSERIAL</td><td>PK — BIGINT para volumen alto</td></tr>
-      <tr><td>accion</td><td>accion_audit</td><td>LOGIN | CREATE | UPDATE | DELETE | etc.</td></tr>
+      <tr><td>tipo</td><td>VARCHAR(50)</td><td>cartera | cartera_vencida | recaudo | morosos | desempeno</td></tr>
+      <tr><td>filtros_json</td><td>JSONB</td><td>Parámetros usados: fechas, filtros, etc.</td></tr>
+      <tr><td><i class="ti ti-link fk-icon"></i>generado_por</td><td>INT</td><td>FK → usuarios ON DELETE SET NULL</td></tr>
+    </tbody></table>
+  </div>
+
+  <div class="db-table-card">
+    <div class="db-table-header"><i class="ti ti-shield-check" style="color:var(--muted)"></i><span class="db-table-name">audit_log</span><span class="db-table-desc">Registro inmutable de acciones críticas</span></div>
+    <table class="db-cols"><thead><tr><th>Columna</th><th>Tipo</th><th>Notas</th></tr></thead><tbody>
+      <tr><td><i class="ti ti-key pk-icon"></i>id</td><td>BIGSERIAL</td><td>BIGINT — alto volumen de registros</td></tr>
+      <tr><td>accion</td><td>accion_audit</td><td>LOGIN | CREATE | UPDATE | DELETE | REGISTER_PAGO | etc.</td></tr>
       <tr><td>entidad / entidad_id</td><td>VARCHAR / INT</td><td>'factura', 'pago', 'cliente'…</td></tr>
       <tr><td>detalle_json</td><td>JSONB</td><td>Snapshot antes/después del cambio</td></tr>
-      <tr><td>ip_origen</td><td>INET</td><td>IP del cliente</td></tr>
-      <tr><td>timestamp</td><td>TIMESTAMPTZ</td><td>Inmutable — no tiene trigger de update</td></tr>
+      <tr><td>ip_origen</td><td>INET</td><td>IP del cliente que realizó la acción</td></tr>
+      <tr><td>timestamp</td><td>TIMESTAMPTZ</td><td>Inmutable — sin trigger de update</td></tr>
     </tbody></table>
   </div>
 </div>
 
 <!-- DB VIEWS -->
 <div class="page" id="page-db-views">
-  <div class="topbar"><div class="topbar-left"><h1>Base de datos — vistas y triggers</h1></div><span class="badge badge-amber">Base de datos</span></div>
+  <div class="topbar"><div><h1>Base de datos — vistas y triggers</h1></div><span class="badge badge-amber">Base de datos</span></div>
   <h2>Vistas disponibles</h2>
   <table class="tech-table">
     <thead><tr><th>Vista</th><th>Descripción</th><th>Usado por</th></tr></thead>
     <tbody>
       <tr><td><code>v_cartera_vencida</code></td><td>Facturas vencidas con días de mora y rango de antigüedad calculados</td><td>Módulo cartera, reportes</td></tr>
-      <tr><td><code>v_resumen_cartera</code></td><td>KPIs de cartera agregados por empresa (total, vencida, vigente, morosos)</td><td>Dashboard</td></tr>
+      <tr><td><code>v_resumen_cartera</code></td><td>KPIs agregados por empresa: total, vencida, vigente, morosos</td><td>Dashboard</td></tr>
       <tr><td><code>v_recaudo_mensual</code></td><td>Recaudo mensual por empresa</td><td>Dashboard, reportes</td></tr>
-      <tr><td><code>v_prediccion_vigente</code></td><td>Última predicción de riesgo por cliente (DISTINCT ON)</td><td>Módulo IA, listado clientes</td></tr>
+      <tr><td><code>v_prediccion_vigente</code></td><td>Última predicción de riesgo por cliente (DISTINCT ON)</td><td>IA, listado clientes</td></tr>
     </tbody>
   </table>
-  <h2>Trigger — aplicar pago</h2>
-  <p>Al insertar un registro en <code>pagos</code>, el trigger <code>trg_aplicar_pago</code> descuenta el <code>saldo_pendiente</code> de la factura y la marca como <code>pagada</code> si el saldo llega a cero. También valida que el pago no exceda el saldo.</p>
-  <div class="alert alert-success"><i class="ti ti-check"></i><div>Este trigger garantiza consistencia incluso si alguien inserta un pago directamente en la base de datos, sin pasar por la API.</div></div>
+  <h2>Trigger — trg_aplicar_pago</h2>
+  <p style="color:var(--text)">Al insertar en <code>pagos</code>, descuenta el <code>saldo_pendiente</code> de la factura. Si el saldo llega a cero, cambia el estado a <code>pagada</code>. También valida que el pago no exceda el saldo.</p>
+  <div class="alert alert-success"><i class="ti ti-check"></i><div>Este trigger garantiza consistencia a nivel de base de datos, independientemente de si el pago se inserta desde la API o directamente en la BD.</div></div>
   <h2>Trigger — timestamps automáticos</h2>
-  <p>Las tablas <code>empresas</code>, <code>usuarios</code>, <code>clientes</code>, <code>facturas</code> y <code>acuerdos_pago</code> tienen triggers <code>BEFORE UPDATE</code> que actualizan automáticamente el campo <code>actualizada_en</code>.</p>
-  <h2>Función — marcar facturas vencidas</h2>
-  <pre>SELECT marcar_facturas_vencidas();</pre>
-  <p>Marca como <code>vencida</code> toda factura en estado <code>pendiente</code> cuya <code>fecha_vencimiento</code> ya pasó. Debe ejecutarse con un cron job diario, por ejemplo con <code>pg_cron</code>:</p>
+  <p style="color:var(--text)">Las tablas <code>empresas</code>, <code>usuarios</code>, <code>clientes</code>, <code>facturas</code> y <code>acuerdos_pago</code> tienen triggers <code>BEFORE UPDATE</code> que actualizan automáticamente <code>actualizada_en</code>.</p>
+  <h2>Función — marcar_facturas_vencidas()</h2>
+  <p style="color:var(--text)">Marca como <code>vencida</code> toda factura <code>pendiente</code> cuya <code>fecha_vencimiento</code> ya pasó. Debe ejecutarse con un cron job diario.</p>
   <pre>-- Con pg_cron (instalar extensión)
 SELECT cron.schedule('0 1 * * *', 'SELECT marcar_facturas_vencidas()');
--- Ejecuta todos los días a la 1:00 AM</pre>
+-- Se ejecuta todos los días a la 1:00 AM</pre>
 </div>
 
 <!-- DB INDEX -->
 <div class="page" id="page-db-index">
-  <div class="topbar"><div class="topbar-left"><h1>Base de datos — índices y rendimiento</h1></div><span class="badge badge-amber">Base de datos</span></div>
-  <div class="alert alert-info"><i class="ti ti-info-circle"></i><div>La arquitectura está diseñada para soportar más de 1.000 empresas, 100.000 clientes y millones de facturas. Los índices son críticos para mantener tiempos de respuesta bajos a ese volumen.</div></div>
+  <div class="topbar"><div><h1>Base de datos — índices y rendimiento</h1></div><span class="badge badge-amber">Base de datos</span></div>
+  <div class="alert alert-info"><i class="ti ti-info-circle"></i><div>La arquitectura soporta más de 1.000 empresas, 100.000 clientes y millones de facturas. Los índices son críticos para tiempos de respuesta bajos a ese volumen.</div></div>
   <h2>Índices por tabla</h2>
   <table class="tech-table">
-    <thead><tr><th>Tabla</th><th>Índice</th><th>Justificación</th></tr></thead>
+    <thead><tr><th>Tabla</th><th>Columnas indexadas</th><th>Justificación</th></tr></thead>
     <tbody>
       <tr><td>empresas</td><td>plan, activa</td><td>Filtrar empresas por plan o estado</td></tr>
-      <tr><td>usuarios</td><td>empresa_id, correo</td><td>Login y listado de usuarios por empresa</td></tr>
+      <tr><td>usuarios</td><td>empresa_id, correo</td><td>Login y listado por empresa</td></tr>
       <tr><td>clientes</td><td>empresa_id, estado, ciudad</td><td>Filtros más usados en el listado</td></tr>
       <tr><td>clientes</td><td>GIN sobre nombre (tsvector)</td><td>Búsqueda de texto por nombre</td></tr>
-      <tr><td>facturas</td><td>empresa_id, cliente_id, estado</td><td>Filtros principales de facturas</td></tr>
+      <tr><td>facturas</td><td>empresa_id, cliente_id, estado</td><td>Filtros principales</td></tr>
       <tr><td>facturas</td><td>fecha_vencimiento</td><td>Cálculo de cartera vencida y alertas</td></tr>
       <tr><td>facturas</td><td>(empresa_id, estado)</td><td>Índice compuesto para dashboard</td></tr>
       <tr><td>pagos</td><td>empresa_id, factura_id, fecha_pago</td><td>Historial y recaudo mensual</td></tr>
@@ -810,67 +813,62 @@ SELECT cron.schedule('0 1 * * *', 'SELECT marcar_facturas_vencidas()');
       <tr><td>audit_log</td><td>empresa_id, usuario_id, timestamp DESC, (entidad, entidad_id)</td><td>Consultas de auditoría</td></tr>
     </tbody>
   </table>
-  <h2>Escalabilidad esperada</h2>
+  <h2>Capacidad esperada</h2>
   <div class="card-grid">
     <div class="stat-card"><div class="stat-label">Empresas</div><div class="stat-val">1.000+</div></div>
     <div class="stat-card"><div class="stat-label">Clientes</div><div class="stat-val">100.000+</div></div>
     <div class="stat-card"><div class="stat-label">Facturas</div><div class="stat-val">Millones</div></div>
-    <div class="stat-card"><div class="stat-label">Modelo</div><div class="stat-val">Multi-tenant</div></div>
+    <div class="stat-card"><div class="stat-label">Modelo</div><div class="stat-val" style="font-size:15px">Multi-tenant</div></div>
   </div>
-  <h2>Consideraciones adicionales</h2>
-  <div class="card"><ul style="list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--muted)">
-    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:6px"></i>Usar <code>NUMERIC(18,2)</code> para todos los valores monetarios — nunca <code>FLOAT</code> (imprecisión)</li>
-    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:6px"></i>Usar <code>TIMESTAMPTZ</code> para todas las fechas con hora — almacena en UTC</li>
-    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:6px"></i><code>audit_log</code> usa <code>BIGSERIAL</code> (BIGINT) porque acumulará el mayor volumen de registros</li>
-    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:6px"></i>Evaluar particionamiento de <code>audit_log</code> y <code>predicciones_ia</code> por <code>empresa_id</code> cuando supere los 10M de filas</li>
-    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:6px"></i>Configurar backups automáticos diarios con retención mínima de 30 días</li>
+  <h2>Buenas prácticas</h2>
+  <div class="card"><ul style="list-style:none;display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:var(--text)">
+    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:7px"></i>Usar <code>NUMERIC(18,2)</code> para valores monetarios — nunca <code>FLOAT</code> (imprecisión flotante)</li>
+    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:7px"></i>Usar <code>TIMESTAMPTZ</code> para fechas con hora — almacena en UTC</li>
+    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:7px"></i><code>audit_log</code> usa <code>BIGSERIAL</code> (BIGINT) por el alto volumen esperado</li>
+    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:7px"></i>Evaluar particionamiento de <code>audit_log</code> por <code>empresa_id</code> al superar 10M filas</li>
+    <li><i class="ti ti-arrow-right" style="color:var(--accent);margin-right:7px"></i>Configurar backups automáticos diarios con retención mínima de 30 días</li>
   </ul></div>
 </div>
 
 </main>
 
 <script>
-const CREDS = { user: 'infocor', pass: 'infocor.s.a.s' }
-
-function doLogin() {
-  const u = document.getElementById('inp-user').value.trim()
-  const p = document.getElementById('inp-pass').value
-  if (u === CREDS.user && p === CREDS.pass) {
-    document.getElementById('login-overlay').style.display = 'none'
-    document.getElementById('sidebar').style.display = 'flex'
-    document.getElementById('main').style.display = 'block'
-  } else {
-    const err = document.getElementById('login-err')
-    err.style.display = 'block'
-    setTimeout(() => err.style.display = 'none', 3000)
+const CREDS={user:'infocor',pass:'infocor.s.a.s'}
+function doLogin(){
+  const u=document.getElementById('inp-user').value.trim()
+  const p=document.getElementById('inp-pass').value
+  if(u===CREDS.user&&p===CREDS.pass){
+    document.getElementById('login-overlay').style.display='none'
+    document.getElementById('sidebar').style.display='flex'
+    document.getElementById('main').style.display='block'
+  }else{
+    const e=document.getElementById('login-err')
+    e.style.display='block'
+    setTimeout(()=>e.style.display='none',3000)
   }
 }
-
-document.getElementById('inp-pass').addEventListener('keydown', e => {
-  if (e.key === 'Enter') doLogin()
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('inp-pass').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()})
+  document.getElementById('inp-user').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('inp-pass').focus()})
 })
-
-function doLogout() {
-  document.getElementById('sidebar').style.display = 'none'
-  document.getElementById('main').style.display = 'none'
-  document.getElementById('login-overlay').style.display = 'flex'
-  document.getElementById('inp-user').value = ''
-  document.getElementById('inp-pass').value = ''
+function doLogout(){
+  document.getElementById('sidebar').style.display='none'
+  document.getElementById('main').style.display='none'
+  document.getElementById('login-overlay').style.display='flex'
+  document.getElementById('inp-user').value=''
+  document.getElementById('inp-pass').value=''
 }
-
-function show(page) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'))
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'))
-  document.getElementById('page-' + page).classList.add('active')
+function show(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'))
+  document.getElementById('page-'+page).classList.add('active')
   document.querySelector(`[data-page="${page}"]`).classList.add('active')
-  document.getElementById('main').scrollTo(0, 0)
+  document.getElementById('main').scrollTo(0,0)
 }
-
-function filterEndpoints() {
-  const q = document.getElementById('ep-search').value.toLowerCase()
-  document.querySelectorAll('.endpoint').forEach(ep => {
-    const text = ep.innerText.toLowerCase()
-    ep.style.display = text.includes(q) ? 'flex' : 'none'
+function filterEndpoints(){
+  const q=document.getElementById('ep-search').value.toLowerCase()
+  document.querySelectorAll('.endpoint').forEach(ep=>{
+    ep.style.display=ep.innerText.toLowerCase().includes(q)?'flex':'none'
   })
 }
 </script>
